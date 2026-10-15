@@ -1,0 +1,20 @@
+server:
+  port: 8082 # Cổng chạy của service promotion
+
+spring:
+  application:
+    # ĐÂY LÀ DÒNG QUAN TRỌNG NHẤT: Eureka dùng tên này để hiển thị và định tuyến
+    name: service-promotion
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    prefer-ip-address: true
+    # Thêm dòng này để Eureka phân biệt các instance khác nhau trong Docker
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
+# Bạn có thể giữ lại phần cấu hình Database (Datasource) ở phía dưới như cũ nhé

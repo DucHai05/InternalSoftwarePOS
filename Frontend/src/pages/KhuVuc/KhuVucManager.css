@@ -1,0 +1,102 @@
+:root {
+  --indigo-600: #4f46e5;
+  --indigo-700: #4338ca;
+  --indigo-50: #eef2ff;
+  --slate-800: #1e293b;
+  --slate-600: #475569;
+  --slate-400: #94a3b8;
+  --slate-50: #f8fafc;
+}
+
+.kv-manager-wrapper {
+  padding: 8px;
+  animation: fadeIn 0.4s ease-out;
+}
+
+/* Header */
+.kv-header { margin-bottom: 24px; }
+.kv-header-info h1 { font-size: 1.75rem; color: var(--slate-800); font-weight: 800; margin: 0; }
+.kv-header-info p { color: var(--slate-400); font-size: 0.95rem; margin-top: 4px; }
+
+/* Toast Messages */
+.kv-toast {
+  display: flex; align-items: center; gap: 12px; padding: 12px 20px;
+  border-radius: 12px; margin-bottom: 24px; font-weight: 600; font-size: 0.9rem;
+}
+.kv-toast.success { background: #ecfdf5; color: #059669; border: 1px solid #a7f3d0; }
+.kv-toast.error { background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; }
+
+/* Form Card */
+.kv-form-card {
+  background: white; border-radius: 20px; border: 1px solid #f1f5f9;
+  padding: 24px; margin-bottom: 32px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.kv-form-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; color: var(--indigo-600); }
+.kv-form-header h3 { font-size: 1.1rem; color: var(--slate-800); font-weight: 700; margin: 0; }
+
+.kv-input-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 20px; }
+
+.kv-input-group { display: flex; flex-direction: column; gap: 8px; }
+.kv-input-group label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--slate-400); letter-spacing: 0.05em; }
+
+.kv-input-group input, .kv-input-group select {
+  padding: 10px 14px; border: 1px solid #e2e8f0; border-radius: 10px;
+  background: var(--slate-50); font-size: 0.95rem; transition: all 0.2s;
+}
+.kv-input-group input:focus, .kv-input-group select:focus {
+  outline: none; border-color: var(--indigo-600); background: white; box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+}
+
+.kv-form-actions { display: flex; gap: 12px; padding-top: 20px; border-top: 1px solid #f8fafc; }
+
+/* Buttons */
+.btn-kv-primary, .btn-kv-update, .btn-kv-delete, .btn-kv-cancel {
+  display: flex; align-items: center; gap: 8px; padding: 10px 20px;
+  border-radius: 10px; font-weight: 700; font-size: 0.85rem; cursor: pointer; transition: all 0.2s;
+}
+
+.btn-kv-primary { background: var(--indigo-600); color: white; border: none; }
+.btn-kv-primary:hover { background: var(--indigo-700); transform: translateY(-1px); }
+
+.btn-kv-update { background: #f0fdfa; color: #0d9488; border: 1px solid #ccfbf1; }
+.btn-kv-update:hover { background: #0d9488; color: white; }
+
+.btn-kv-delete { background: #fef2f2; color: #dc2626; border: 1px solid #fee2e2; }
+.btn-kv-delete:hover { background: #dc2626; color: white; }
+
+.btn-kv-cancel { background: white; color: var(--slate-400); border: 1px solid #e2e8f0; }
+
+/* Card Grid */
+.kv-card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+
+.kv-item-card {
+  background: white; border-radius: 16px; border: 1px solid #f1f5f9;
+  padding: 24px; cursor: pointer; transition: all 0.2s ease;
+  display: flex; justify-content: space-between; align-items: center;
+  position: relative; overflow: hidden;
+}
+
+.kv-item-card:hover { border-color: var(--indigo-600); transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+.kv-item-card.selected { border: 2px solid var(--indigo-600); background: var(--indigo-50); }
+
+.kv-code { font-size: 0.7rem; font-weight: 800; color: var(--indigo-600); text-transform: uppercase; background: var(--indigo-50); padding: 2px 8px; border-radius: 6px; }
+.kv-name { font-size: 1.15rem; color: var(--slate-800); font-weight: 700; margin: 8px 0 12px; }
+
+.kv-status-pill { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 99px; font-size: 0.75rem; font-weight: 700; }
+.kv-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+
+.kv-status-pill.ready { background: #ecfdf5; color: #059669; }
+.kv-status-pill.mainte { background: #fff7ed; color: #d97706; }
+.kv-status-pill.pause { background: #fef2f2; color: #dc2626; }
+
+.kv-card-arrow { color: var(--slate-100); transition: 0.2s; }
+.kv-item-card:hover .kv-card-arrow { color: var(--indigo-600); transform: translateX(4px); }
+
+/* States */
+.kv-empty-state { grid-column: 1 / -1; text-align: center; padding: 60px 0; color: var(--slate-400); border: 2px dashed #e2e8f0; border-radius: 20px; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (max-width: 1024px) { .kv-card-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 768px) { .kv-input-grid { grid-template-columns: 1fr; } .kv-card-grid { grid-template-columns: 1fr; } }

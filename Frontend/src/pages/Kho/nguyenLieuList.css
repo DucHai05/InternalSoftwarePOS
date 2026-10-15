@@ -1,0 +1,153 @@
+:root {
+    --indigo-600: #4f46e5;
+    --indigo-700: #4338ca;
+    --indigo-50: #eef2ff;
+    --slate-900: #0f172a;
+    --slate-800: #1e293b;
+    --slate-600: #475569;
+    --slate-400: #94a3b8;
+    --slate-200: #e2e8f0;
+    --slate-100: #f1f5f9;
+    --slate-50: #f8fafc;
+    --white: #ffffff;
+    --success: #10b981;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+}
+
+/* ===== CONTAINER ===== */
+.inventory-container {
+    padding: 32px;
+    background-color: var(--slate-50);
+    min-height: 100vh;
+    font-family: 'Inter', system-ui, sans-serif;
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn { 
+    from { opacity: 0; transform: translateY(10px); } 
+    to { opacity: 1; transform: translateY(0); } 
+}
+
+/* ===== HEADER ===== */
+.inventory-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+}
+
+.inventory-title {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--slate-900);
+    letter-spacing: -0.5px;
+    margin: 0;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+/* ===== BUTTONS ===== */
+.btn-lado {
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.btn-report { background: var(--warning); color: white; }
+.btn-import { background: var(--success); color: white; }
+.btn-lado:hover { transform: translateY(-2px); filter: brightness(1.1); }
+.btn-lado:active { transform: scale(0.96); }
+
+/* ===== TABLE CARD ===== */
+.inventory-card {
+    background: var(--white);
+    border-radius: 20px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--slate-100);
+    overflow: hidden;
+}
+
+.inventory-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.inventory-table thead th {
+    background: var(--slate-50);
+    padding: 18px;
+    color: var(--slate-500);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid var(--slate-100);
+}
+
+.inventory-table td {
+    padding: 18px;
+    border-bottom: 1px solid var(--slate-50);
+    color: var(--slate-800);
+    font-size: 0.95rem;
+    vertical-align: middle;
+}
+
+/* Trạng thái sắp hết hàng */
+.row-danger {
+    background-color: #fff1f2;
+}
+
+.row-danger:hover {
+    background-color: #ffe4e6 !important;
+}
+
+/* TEXT STYLING */
+.ma-nl { font-family: 'JetBrains Mono', monospace; font-weight: 600; color: var(--slate-400); text-align: center; }
+.ten-nl { font-weight: 700; color: var(--slate-900); }
+.so-luong { font-weight: 800; font-size: 1.1rem; text-align: center; }
+.don-vi { color: var(--slate-500); font-weight: 500; text-align: center; }
+
+/* BADGES */
+.badge-lado {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* ACTION BUTTONS IN TABLE */
+.btn-table {
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-edit { background: var(--indigo-50); color: var(--indigo-600); margin-right: 6px; }
+.btn-edit:hover { background: var(--indigo-600); color: white; }
+
+.btn-delete { background: white; color: var(--danger); border: 1px solid #fee2e2; }
+.btn-delete:hover { background: var(--danger); color: white; }

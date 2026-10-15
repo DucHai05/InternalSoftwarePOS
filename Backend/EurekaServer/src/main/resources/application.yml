@@ -1,0 +1,21 @@
+server:
+  port: ${PORT:8761}
+
+spring:
+  application:
+    name: eureka-server
+
+eureka:
+  instance:
+    # Ưu tiên dùng IP để các service con dễ tìm thấy server hơn
+    prefer-ip-address: true
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      # Sử dụng localhost nếu chạy máy cá nhân, hoặc tự động nhận diện IP
+      defaultZone: http://localhost:${server.port}/eureka/
+
+  server:
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 5000

@@ -1,0 +1,50 @@
+/* --- CONTAINER DANH SÁCH GIỎ HÀNG --- */
+.cart-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px; /* Khoảng cách nhỏ giữa các CartItem */
+  padding: 8px 0;
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* --- TRẠNG THÁI GIỎ TRỐNG --- */
+.empty-cart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px; /* Chiều cao tối thiểu để căn giữa chữ */
+  color: var(--slate-400);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: center;
+  gap: 12px;
+  background-color: var(--slate-50);
+  margin: 20px;
+  border-radius: 16px;
+  border: 2px dashed var(--slate-200); /* Viền đứt đoạn cho điệu nghệ */
+}
+
+/* Thêm hiệu ứng hover nhẹ cho cả danh sách nếu muốn */
+.cart-list:hover {
+  /* Giữ cho giao diện ổn định, không rung lắc */
+}
+
+/* Tùy chỉnh thanh cuộn bên trong CartList (nếu dùng overflow ở đây) */
+.cart-list::-webkit-scrollbar {
+  width: 5px;
+}
+
+.cart-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.cart-list::-webkit-scrollbar-thumb {
+  background: var(--slate-200);
+  border-radius: 10px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.2.5'
+    id 'io.spring.dependency-management' version '1.1.5'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+repositories { mavenCentral() }
+
+dependencies {
+    // Gateway dùng bản starter-gateway
+    implementation 'org.springframework.cloud:spring-cloud-starter-gateway:4.1.1'
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:4.1.1'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+java { toolchain { languageVersion = JavaLanguageVersion.of(17) } }
+
+jar { enabled = false }
+bootJar { archiveClassifier = '' }

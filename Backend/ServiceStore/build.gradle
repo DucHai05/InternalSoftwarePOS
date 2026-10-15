@@ -1,0 +1,55 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.2.5' // Phải dùng 3.x, không dùng 4.x
+    id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'com.ServiceStore'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    sourceCompatibility = '17' // Khớp với cấu hình Java 17 của bạn
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Spring Boot Starters
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+    // Database
+    runtimeOnly 'com.microsoft.sqlserver:mssql-jdbc'
+
+    // Lombok - Cần cấu hình đúng 2 dòng này để tránh lỗi Annotation Processor
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // Testing
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:2023.0.1"    }
+}
+// Bỏ đoạn bootJar { launchScript() } cũ đi nếu nó vẫn báo lỗi
+// Nếu thực sự cần, hãy dùng cú pháp an toàn này:
+bootJar {
+    enabled = true
+}
+jar {
+    enabled = false
+}

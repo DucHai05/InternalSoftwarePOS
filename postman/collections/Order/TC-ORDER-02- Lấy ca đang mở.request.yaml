@@ -1,0 +1,14 @@
+$kind: http-request
+name: "TC-ORDER-02: Lấy ca đang mở"
+url: "{{baseUrl}}/api/doanhthu/ca/getMaCaDangMo"
+method: GET
+body:
+  type: json
+  content: ""
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Status 200\", () => pm.response.to.have.status(200));\r
+
+      pm.environment.set(\"maCa\", pm.response.text());"
+    language: text/javascript
+order: 4425336537142140

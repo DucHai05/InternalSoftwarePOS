@@ -1,0 +1,21 @@
+server:
+  port: 8084
+
+spring:
+  application:
+    # ĐÂY LÀ DÒNG BẮT BUỘC: Đặt tên để Eureka và Gateway nhận diện
+    name: service-doanh-thu
+
+eureka:
+  client:
+    service-url:
+      # Chuẩn rồi, giữ nguyên kết nối tới container eureka-server
+      defaultZone: http://eureka-server:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    prefer-ip-address: true
+    # Giúp định danh duy nhất cho instance trong mạng Docker
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
+# Các cấu hình SPRING_DATASOURCE bên dưới Hải cứ giữ nguyên nhé

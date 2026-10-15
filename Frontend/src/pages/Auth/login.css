@@ -1,0 +1,294 @@
+:root {
+    --indigo-600: #4f46e5;
+    --indigo-700: #4338ca;
+    --indigo-50: #eef2ff;
+    --slate-900: #0f172a;
+    --slate-800: #1e293b;
+    --slate-600: #475569;
+    --slate-400: #94a3b8;
+    --slate-200: #e2e8f0;
+    --slate-100: #f1f5f9;
+    --slate-50: #f8fafc;
+    --coffee-dark: #3e2723;
+    --coffee-accent: #d2c1b0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    overflow: hidden;
+}
+
+.portal-container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* --- BÊN TRÁI: HERO (Đã sửa căn giữa và typography) --- */
+.portal-hero-section {
+    width: 55%;
+    height: 100%;
+    background: url('/cf.png') no-repeat center;
+    background-size: cover;
+    position: relative;
+}
+
+.hero-overlay {
+    background: linear-gradient(135deg, rgba(38, 24, 21, 0.95) 0%, rgba(15, 23, 42, 0.8) 100%);
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;   /* căn giữa dọc */
+    align-items: center;       /* căn giữa ngang */
+
+    padding: 0 80px;           /* bỏ padding top/bottom gây lệch */
+    text-align: center;        /* text ra giữa luôn */
+
+    color: white;
+}
+.hero-content {
+    max-width: 520px;
+}
+
+.brand-label {
+    font-weight: 700;
+    letter-spacing: 3px;
+    font-size: 3.2rem;
+    color: var(--coffee-accent);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+}
+
+.hero-title {
+    font-size: 3.8rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    letter-spacing: -1.5px;
+}
+
+.highlight {
+    color: var(--coffee-accent);
+    display: block; /* Xuống dòng cho từ quan trọng để tạo nhịp điệu */
+}
+
+.hero-description {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 480px;
+    border-left: 3px solid var(--coffee-accent);
+    padding-left: 20px;
+}
+
+.hero-footer {
+    position: absolute;
+    bottom: 40px;
+    left: 10%;
+    display: flex;
+    gap: 30px;
+    font-size: 0.8rem;
+    color: rgb(255 255 255);
+}
+
+/* --- BÊN PHẢI: FORM --- */
+.portal-form-section {
+    width: 45%;
+    height: 100%;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    position: relative;
+}
+
+.top-right-logo {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+}
+
+.top-right-logo img {
+    height: 50px;
+    width: auto;
+}
+
+.form-wrapper {
+    width: 100%;
+    max-width: 420px;
+}
+
+.welcome-text-group {
+    margin-bottom: 40px;
+}
+
+.form-welcome {
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: var(--slate-900);
+    letter-spacing: -0.5px;
+}
+
+.form-subtitle {
+    color: var(--slate-600);
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+/* INPUT STYLING */
+.input-field {
+    margin-bottom: 20px;
+}
+
+.input-field label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--slate-800);
+}
+
+.input-icon-wrapper {
+    position: relative;
+}
+
+.input-icon {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--slate-400);
+    font-size: 1.1rem;
+}
+
+.input-icon-wrapper input {
+    width: 100%;
+    padding: 15px 15px 15px 50px;
+    background: var(--slate-50);
+    border: 1.5px solid var(--slate-200);
+    border-radius: 12px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.2s ease;
+}
+
+.input-icon-wrapper input:focus {
+    border-color: var(--coffee-dark);
+    background: white;
+    box-shadow: 0 0 0 4px rgba(62, 39, 35, 0.1);
+    outline: none;
+}
+
+.eye-toggle {
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: var(--slate-400);
+}
+
+/* OPTIONS & LINKS */
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 25px 0;
+    font-size: 0.9rem;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--slate-600);
+    cursor: pointer;
+}
+
+.link {
+    color: var(--indigo-600);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.link:hover { text-decoration: underline; }
+
+/* BUTTONS */
+.btn-portal-submit {
+    width: 100%;
+    padding: 16px;
+    background: var(--coffee-dark);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1.05rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.login-error {
+    color: #b91c1c;
+    margin: 0 0 16px;
+    overflow-wrap: anywhere;
+}
+
+.btn-portal-submit:disabled {
+    cursor: wait;
+    opacity: 0.7;
+}
+
+.btn-portal-submit:hover:not(:disabled) {
+    background: #2b1b18;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px -10px rgba(62, 39, 35, 0.5);
+}
+
+.form-footer-actions {
+    display: flex;
+    gap: 12px;
+    padding-top: 24px;
+    border-top: 1px solid var(--slate-100);
+}
+
+.btn-outline {
+    flex: 1;
+    padding: 12px;
+    border: 1.5px solid var(--slate-200);
+    background: white;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--slate-600);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-outline:hover {
+    background: var(--slate-50);
+    border-color: var(--slate-300);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+    .portal-hero-section { display: none; }
+    .portal-form-section { width: 100%; }
+}

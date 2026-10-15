@@ -1,0 +1,96 @@
+server:
+  port: ${PORT:8080} # Render sẽ tự cấp port qua biến môi trường, mặc định là 8080
+
+spring:
+  application:
+    name: service-apigateway
+  cloud:
+    gateway:
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials, RETAIN_FIRST
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            # Thêm domain Vercel của bạn vào đây
+            allowedOrigins: 
+              - "http://localhost:5173"
+              - "http://localhost:3000"
+              - "https://coffeeofduchai.vercel.app"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+            allowCredentials: true
+
+      routes:
+        # 1. Service Cafe (8081)
+        - id: service-cafe
+          uri: lb://SERVICE-CAFE
+          predicates:
+            - Path=/api/cafe/**
+          filters:
+            - StripPrefix=2
+        # 2. Service Promotion (8082)
+        - id: service-promotion
+          uri: lb://SERVICE-PROMOTION
+          predicates:
+            - Path=/api/promotion/**
+          filters:
+            - StripPrefix=2
+        # 3. Service Table (8083)
+        - id: service-table
+          uri: lb://SERVICE-TABLE
+          predicates:
+            - Path=/api/table/**
+          filters:
+            - StripPrefix=2
+        # 4. Service Doanh Thu (8084)
+        - id: service-doanh-thu
+          uri: lb://SERVICE-DOANH-THU
+          predicates:
+             - Path=/api/doanhthu/**, /api/ca/**, /api/phieuthuchi/**
+          filters:
+            - StripPrefix=2
+        # 5. Service Salary (8085)
+        - id: service-salary
+          uri: lb://SERVICE-SALARY
+          predicates:
+            - Path=/api/salary/**
+          filters:
+            - StripPrefix=2
+        # 6. Service User (8086)
+        - id: service-user
+          uri: lb://SERVICE-USER
+          predicates:
+            - Path=/api/user/**
+          filters:
+            - StripPrefix=2
+        # 7. Service Product (8087)
+        - id: service-product
+          uri: lb://SERVICE-PRODUCT
+          predicates:
+            - Path=/api/product/**
+          filters:
+            - StripPrefix=2
+        # 8. Service Store (8088)
+        - id: service-store
+          uri: lb://SERVICE-STORE
+          predicates:
+            - Path=/api/store/**
+          filters:
+            - StripPrefix=2
+        # 9. Service Notification (8089)
+        - id: service-notification
+          uri: lb://SERVICE-NOTIFICATION
+          predicates:
+            - Path=/api/notification/**, /api/notifications/**
+          filters:
+            - StripPrefix=2
+# Sửa lại đoạn cuối file application.yml của Gateway như sau:
+eureka:
+  client:
+    service-url:
+      # Sử dụng biến môi trường để linh hoạt giữa Local và Render
+      defaultZone: ${EUREKA_SERVER_URL:http://eureka-server:8761/eureka/}
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    prefer-ip-address: true

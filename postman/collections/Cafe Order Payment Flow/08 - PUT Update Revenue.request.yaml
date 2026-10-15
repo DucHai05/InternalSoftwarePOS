@@ -1,0 +1,38 @@
+$kind: http-request
+name: 08 - PUT Update Revenue
+url: "{{baseUrl}}/api/doanhthu/doanhthu/update-after-payment/{{maCa}}"
+method: PUT
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: "{\r
+
+    \  \"amount\": {{tongTien}},\r
+
+    \  \"method\": \"{{phuongThucThanhToan}}\"\r
+
+    }"
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Status code is 200\", function () {\r
+
+      \    pm.response.to.have.status(200);\r
+
+      });\r
+
+      \r
+
+      pm.test(\"Revenue update response is not empty\", function () {\r
+
+      \    pm.expect(pm.response.text()).to.not.be.empty;\r
+
+      }); \r
+
+      console.log(\"maCa =\", pm.environment.get(\"maCa\"));\r
+
+      console.log(\"tongTien =\", pm.environment.get(\"tongTien\"));\r
+
+      console.log(\"phuongThucThanhToan =\", pm.environment.get(\"phuongThucThanhToan\"));"
+    language: text/javascript
+order: 4487293216129592

@@ -1,0 +1,93 @@
+:root {
+  --indigo-600: #4f46e5;
+  --indigo-500: #6366f1;
+  --indigo-50: #eef2ff;
+  --slate-900: #0f172a;
+  --slate-600: #475569;
+  --slate-400: #94a3b8;
+  --slate-50: #f8fafc;
+}
+
+.payment-page-wrapper {
+  background-color: var(--slate-50);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Loading Screen */
+.payment-loading-screen {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  background: white;
+}
+
+.spin-icon {
+  color: var(--indigo-600);
+  animation: spin 1s linear infinite;
+}
+
+.payment-loading-screen p {
+  font-weight: 600;
+  color: var(--slate-600);
+  font-size: 1.1rem;
+}
+
+/* Error Screen */
+.payment-error-screen {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 24px;
+}
+
+.payment-error-screen h2 {
+  font-size: 1.75rem;
+  color: var(--slate-900);
+  margin: 24px 0 12px;
+  font-weight: 800;
+}
+
+.payment-error-screen p {
+  color: var(--slate-600);
+  margin-bottom: 32px;
+}
+
+.btn-back-home {
+  padding: 12px 32px;
+  background: var(--indigo-600);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-back-home:hover {
+  background: var(--slate-900);
+  transform: translateY(-2px);
+}
+
+/* Animation */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Tùy chỉnh cho ReceiptModal khi nằm trong trang này */
+/* Lưu ý: Hải cần đảm bảo ReceiptModal có giao diện Indigo tương xứng */

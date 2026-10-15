@@ -1,0 +1,18 @@
+name: AutoTest
+values:
+  - key: baseUrl
+    value: ''
+  - key: maBan
+    value: ''
+  - key: maCa
+    value: ''
+  - key: maHoaDon
+    value: ''
+  - key: maChiTietHD
+    value: ''
+  - key: phuongThucThanhToan
+    value: ''
+  - key: tongTien
+    value: ''
+  - key: maSanPham
+    value: ''

@@ -1,0 +1,261 @@
+/* --- LỚP PHỦ NỀN --- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 4000;
+  padding: 20px;
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* --- TỜ HÓA ĐƠN (PAPER CARD) --- */
+.receipt-paper {
+  background: white;
+  width: 100%;
+  max-width: 440px;
+  max-height: 90vh;
+  border-radius: 28px; /* Bo góc lớn đồng bộ hệ thống */
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: modalSlideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  padding: 32px;
+}
+
+/* Header hóa đơn */
+.receipt-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.receipt-header h2 {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--slate-900);
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+/* Thông tin chung */
+.receipt-info {
+  margin-bottom: 24px;
+  font-size: 0.9rem;
+  color: var(--slate-500);
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.info-row strong {
+  color: var(--slate-800);
+}
+
+/* Bảng danh sách món */
+.receipt-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.receipt-table th {
+  text-align: left;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--slate-400);
+  border-bottom: 2px solid var(--slate-50);
+  padding-bottom: 8px;
+}
+
+.receipt-table td {
+  padding: 12px 0;
+  font-size: 0.95rem;
+  color: var(--slate-800);
+  border-bottom: 1px solid var(--slate-50);
+}
+
+.receipt-table td:nth-child(3) { font-weight: 700; } /* Số lượng */
+
+/* Đường kẻ răng cưa giả lập */
+.receipt-divider {
+  border-top: 2px dashed var(--slate-100);
+  margin: 16px 0;
+}
+
+/* --- CHỌN PHƯƠNG THỨC THANH TOÁN --- */
+.payment-selection {
+  background: var(--slate-50);
+  padding: 16px;
+  border-radius: 16px;
+  margin-bottom: 24px;
+}
+
+.radio-group label {
+  flex: 1;
+  background: white;
+  padding: 12px;
+  border-radius: 12px;
+  border: 2px solid transparent;
+  transition: all 0.2s;
+  font-weight: 700;
+  color: var(--slate-600);
+  text-align: center;
+  font-size: 0.85rem;
+}
+/* --- TỜ HÓA ĐƠN (PAPER CARD) --- */
+.receipt-paper {
+  /* Giữ nguyên các thuộc tính cũ, đảm bảo có display: flex */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Cấm paper tràn ra ngoài */
+  padding: 32px 24px; /* Giảm padding ngang một chút để chừa chỗ cho scroll */
+}
+
+/* --- VÙNG NỘI DUNG CUỘN (BODY) --- */
+.receipt-body {
+  flex: 1; /* Tự động chiếm hết không gian giữa Header và Actions */
+  overflow-y: auto; /* Hiện thanh cuộn khi nội dung quá dài */
+  padding-right: 12px; /* Khoảng đệm để nội dung không dính sát thanh cuộn */
+  margin-bottom: 20px;
+}
+
+/* Tùy chỉnh thanh cuộn siêu mượt chuẩn SaaS */
+.receipt-body::-webkit-scrollbar {
+  width: 5px;
+}
+
+.receipt-body::-webkit-scrollbar-track {
+  background: var(--slate-50);
+  border-radius: 10px;
+}
+
+.receipt-body::-webkit-scrollbar-thumb {
+  background: var(--slate-200);
+  border-radius: 10px;
+  transition: background 0.3s;
+}
+
+.receipt-body:hover::-webkit-scrollbar-thumb {
+  background: var(--indigo-200); /* Hiện màu Indigo nhẹ khi rê chuột vào */
+}
+
+/* Đảm bảo Actions luôn nằm dưới cùng */
+.receipt-actions {
+  margin-top: auto; /* Ép cụm nút xuống đáy */
+  padding-top: 10px;
+}
+/* Khi Radio được check thông qua thẻ label bọc ngoài */
+.radio-group label:has(input:checked) {
+  border-color: var(--indigo-600);
+  color: var(--indigo-600);
+  background: var(--indigo-50);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.1);
+}
+
+.radio-group input[type="radio"] {
+  accent-color: var(--indigo-600);
+}
+
+/* --- TỔNG KẾT TIỀN --- */
+.receipt-summary {
+  margin-bottom: 24px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+  color: var(--slate-600);
+}
+
+.summary-row.total {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--slate-100);
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--indigo-600);
+}
+
+/* --- QR & FOOTER --- */
+.receipt-footer {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.qr-placeholder {
+  margin-bottom: 16px;
+  background: white;
+  padding: 12px;
+  display: inline-block;
+  border-radius: 16px;
+  border: 1px solid var(--slate-100);
+}
+
+.receipt-footer p {
+  font-weight: 800;
+  color: var(--slate-400);
+  letter-spacing: 2px;
+  font-size: 0.75rem;
+}
+
+/* --- NÚT HÀNH ĐỘNG --- */
+.receipt-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn-print {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+  color: white;
+  border: none;
+  border-radius: 16px;
+  font-weight: 800;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.4);
+  transition: all 0.2s;
+}
+
+.btn-print:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 20px -3px rgba(79, 70, 229, 0.5);
+}
+
+.btn-close {
+  background: none;
+  border: none;
+  color: var(--slate-400);
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.btn-close:hover {
+  color: var(--slate-600);
+}
+
+/* UTILS */
+.text-right { text-align: right; }
+
+@keyframes modalSlideUp {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

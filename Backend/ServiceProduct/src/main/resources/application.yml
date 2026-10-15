@@ -1,0 +1,16 @@
+server:
+  port: 8087
+
+spring:
+  application:
+    # ĐÂY LÀ DÒNG BẮT BUỘC: Đặt tên để Eureka và Gateway nhận diện
+    name: service-product
+eureka:
+  client:
+    service-url:
+      # LƯU Ý: Nếu chạy bằng Docker, phải dùng tên container là "eureka-server"
+      defaultZone: http://eureka-server:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    prefer-ip-address: true

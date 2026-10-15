@@ -1,0 +1,102 @@
+/* Định nghĩa biến màu nếu bạn chưa có file global */
+:root {
+  --slate-50: #f8fafc;
+  --slate-100: #f1f5f9;
+  --slate-400: #94a3b8;
+  --slate-900: #0f172a;
+  --indigo-50: #eef2ff;
+  --indigo-200: #c7d2fe;
+  --indigo-600: #4f46e5;
+}
+
+.tableCard {
+  background: white;
+  aspect-ratio: 1 / 1;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid var(--slate-100);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+  /* Chặn việc bị CSS khác đè bằng cách cô lập hoàn toàn */
+  box-sizing: border-box; 
+}
+
+.tableCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px -8px rgba(79, 70, 229, 0.15);
+  border-color: var(--indigo-200);
+}
+
+.tableCard:active {
+  transform: scale(0.95);
+}
+
+/* Trạng thái */
+.empty {
+  background: white;
+}
+
+.occupied {
+  border: 2px solid var(--indigo-600);
+  background: linear-gradient(135deg, #ffffff 0%, var(--indigo-50) 100%);
+}
+
+/* Các thành phần bên trong */
+.tableIcon {
+  width: 50px;
+  height: 50px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 4px;
+  transition: all 0.3s ease;
+  background: var(--slate-50);
+  color: var(--slate-400);
+}
+
+.occupied .tableIcon {
+  background: var(--indigo-600);
+  color: white;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+}
+
+.tableNumber {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--slate-900);
+}
+
+.tableStatus {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--slate-400);
+}
+
+.occupied .tableStatus {
+  color: var(--indigo-600);
+}
+
+/* Hiệu ứng Pulse */
+.pulseAnimation {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: 24px;
+  border: 2px solid var(--indigo-600);
+  animation: tablePulse 2s infinite;
+  pointer-events: none;
+}
+
+@keyframes tablePulse {
+  0% { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(1.15); opacity: 0; }
+}

@@ -1,0 +1,5 @@
+# Tự động xử lý mọi file text
+* text=auto
+
+# Ép các file script luôn luôn dùng LF (để chạy Docker không lỗi)
+*.sh text eol=lf

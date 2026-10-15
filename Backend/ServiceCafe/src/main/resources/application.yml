@@ -1,0 +1,17 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    # ĐÂY LÀ DÒNG BẮT BUỘC: Đặt tên để Eureka và Gateway nhận diện
+    name: service-cafe
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    prefer-ip-address: true
+    # Thêm dòng này để định danh instance trong Docker không bị trùng
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}

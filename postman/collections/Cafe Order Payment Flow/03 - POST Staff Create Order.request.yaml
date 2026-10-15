@@ -1,0 +1,66 @@
+$kind: http-request
+name: 03 - POST Staff Create Order
+url: "{{baseUrl}}/api/cafe/orders/staff-create"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: "{\r
+
+    \  \"maBan\": \"{{maBan}}\",\r
+
+    \  \"maCa\": \"{{maCa}}\",\r
+
+    \  \"items\": [\r
+
+    \    {\r
+
+    \      \"maSanPham\": \"{{maSanPham}}\",\r
+
+    \      \"soLuong\": 2,\r
+
+    \      \"giaBan\": 30000,\r
+
+    \      \"ghiChu\": \"test postman tao order\"\r
+
+    \    }\r
+
+    \  ]\r
+
+    }"
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Status code is 200\", function () {\r
+
+      \    pm.response.to.have.status(200);\r
+
+      });\r
+
+      \r
+
+      const json = pm.response.json();\r
+
+      \r
+
+      pm.test(\"Has hoaDon\", function () {\r
+
+      \    pm.expect(json.hoaDon).to.exist;\r
+
+      });\r
+
+      \r
+
+      pm.test(\"HoaDon is PENDING\", function () {\r
+
+      \    pm.expect(json.hoaDon.trangThaiThanhToan).to.eql(\"PENDING\");\r
+
+      });\r
+
+      \r
+
+      pm.environment.set(\"maHoaDon\", json.hoaDon.maHoaDon);\r
+
+      console.log(\"Saved maHoaDon:\", json.hoaDon.maHoaDon);"
+    language: text/javascript
+order: 3116525094932764

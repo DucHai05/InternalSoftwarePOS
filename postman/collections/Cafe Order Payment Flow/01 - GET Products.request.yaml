@@ -1,0 +1,46 @@
+$kind: http-request
+name: 01 - GET Products
+url: "{{baseUrl}}/api/product/v1/san-pham"
+method: GET
+body:
+  type: json
+  content: ""
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Status code is 200\", function () {\r
+
+      \    pm.response.to.have.status(200);\r
+
+      });\r
+
+      \r
+
+      const products = pm.response.json();\r
+
+      \r
+
+      pm.test(\"Response is product array\", function () {\r
+
+      \    pm.expect(products).to.be.an(\"array\");\r
+
+      });\r
+
+      \r
+
+      pm.test(\"Has at least one product\", function () {\r
+
+      \    pm.expect(products.length).to.be.greaterThan(0);\r
+
+      });\r
+
+      \r
+
+      if (products.length > 0) {\r
+
+      \    pm.environment.set(\"maSanPham\", products[0].maSanPham);\r
+
+      \    console.log(\"Saved maSanPham:\", products[0].maSanPham);\r
+
+      }"
+    language: text/javascript
+order: 1782750125088

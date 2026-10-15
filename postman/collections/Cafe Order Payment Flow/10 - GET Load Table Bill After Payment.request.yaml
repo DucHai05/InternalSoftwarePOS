@@ -1,0 +1,35 @@
+$kind: http-request
+name: 10 - GET Load Table Bill After Payment
+url: "{{baseUrl}}/api/cafe/orders/loadBan/{{maBan}}"
+method: GET
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Status code is 200\", function () {\r
+
+      \    pm.response.to.have.status(200);\r
+
+      });\r
+
+      \r
+
+      const text = pm.response.text();\r
+
+      \r
+
+      pm.test(\"No pending bill after payment\", function () {\r
+
+      \    if (!text || text === \"null\") {\r
+
+      \        pm.expect(true).to.eql(true);\r
+
+      \    } else {\r
+
+      \        const bill = pm.response.json();\r
+
+      \        pm.expect(bill.trangThaiThanhToan).to.not.eql(\"PENDING\");\r
+
+      \    }\r
+
+      });"
+    language: text/javascript
+order: 4502714502816319

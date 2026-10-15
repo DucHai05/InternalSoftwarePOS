@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="Backend_JavaBuilder" />
+        <module name="demo" />
+        <module name="CoffeeProduct" />
+      </profile>
+      <profile name="Gradle Imported" enabled="true">
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.32/17d46b3e205515e1e8efd3ee4d57ce8018914163/lombok-1.18.32.jar" />
+        </processorPath>
+        <module name="ServiceSalary.main" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Order&amp;POSService" target="17" />
+      <module name="Order_POS" target="17" />
+      <module name="POS&amp;Order" target="17" />
+      <module name="ServiceOrder" target="17" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Backend_JavaBuilder" options="-parameters" />
+      <module name="CoffeeProduct" options="-parameters" />
+      <module name="EurekaServer" options="-parameters" />
+      <module name="EurekaServer.main" options="-parameters" />
+      <module name="EurekaServer.test" options="-parameters" />
+      <module name="Order&amp;POSService" options="-parameters" />
+      <module name="Order_POS" options="-parameters" />
+      <module name="Order_POS.main" options="-parameters" />
+      <module name="Order_POS.test" options="-parameters" />
+      <module name="POS&amp;Order" options="-parameters" />
+      <module name="ServiceAPIGateway" options="-parameters" />
+      <module name="ServiceAPIGateway.main" options="-parameters" />
+      <module name="ServiceAPIGateway.test" options="-parameters" />
+      <module name="ServiceCafe" options="-parameters" />
+      <module name="ServiceCafe.main" options="-parameters" />
+      <module name="ServiceCafe.test" options="-parameters" />
+      <module name="ServiceDoanhThu" options="-parameters" />
+      <module name="ServiceDoanhThu.main" options="-parameters" />
+      <module name="ServiceDoanhThu.test" options="-parameters" />
+      <module name="ServiceNotification" options="-parameters" />
+      <module name="ServiceNotification.main" options="-parameters" />
+      <module name="ServiceNotification.test" options="-parameters" />
+      <module name="ServiceOrder" options="-parameters" />
+      <module name="ServiceProduct" options="-parameters" />
+      <module name="ServiceProduct.main" options="-parameters" />
+      <module name="ServiceProduct.test" options="-parameters" />
+      <module name="ServicePromotion" options="-parameters" />
+      <module name="ServicePromotion.main" options="-parameters" />
+      <module name="ServicePromotion.test" options="-parameters" />
+      <module name="ServiceSalary" options="-parameters" />
+      <module name="ServiceSalary.main" options="-parameters" />
+      <module name="ServiceSalary.test" options="-parameters" />
+      <module name="ServiceStore" options="-parameters" />
+      <module name="ServiceStore.main" options="-parameters" />
+      <module name="ServiceStore.test" options="-parameters" />
+      <module name="ServiceTable" options="-parameters" />
+      <module name="ServiceTable.main" options="-parameters" />
+      <module name="ServiceTable.test" options="-parameters" />
+      <module name="ServiceUser" options="-parameters" />
+      <module name="ServiceUser.main" options="-parameters" />
+      <module name="ServiceUser.test" options="-parameters" />
+      <module name="demo" options="-parameters" />
+    </option>
+  </component>
+</project>

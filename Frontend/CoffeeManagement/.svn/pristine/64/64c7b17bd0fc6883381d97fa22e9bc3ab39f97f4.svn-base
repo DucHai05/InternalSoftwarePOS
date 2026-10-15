@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ServiceCafe.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ServiceCafe.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ServiceDoanhThu.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ServiceDoanhThu.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ServiceDoanhThu.test.iml" filepath="$PROJECT_DIR$/.idea/modules/ServiceDoanhThu.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ServiceProduct.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ServiceProduct.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ServicePromotion.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ServicePromotion.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ServiceSalary.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ServiceSalary.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ServiceStore.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ServiceStore.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ServiceTable.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ServiceTable.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ServiceUser.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ServiceUser.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/SpringBoots.iml" filepath="$PROJECT_DIR$/.idea/SpringBoots.iml" />
+    </modules>
+  </component>
+</project>

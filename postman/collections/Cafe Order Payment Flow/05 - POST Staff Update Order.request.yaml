@@ -1,0 +1,70 @@
+$kind: http-request
+name: 05 - POST Staff Update Order
+url: "{{baseUrl}}/api/cafe/orders/staff-create"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: "{\r
+
+    \  \"maHoaDon\": \"{{maHoaDon}}\",\r
+
+    \  \"maBan\": \"{{maBan}}\",\r
+
+    \  \"maCa\": \"{{maCa}}\",\r
+
+    \  \"items\": [\r
+
+    \    {\r
+
+    \      \"maSanPham\": \"{{maSanPham}}\",\r
+
+    \      \"soLuong\": 3,\r
+
+    \      \"giaBan\": 30000,\r
+
+    \      \"ghiChu\": \"test postman tang so luong\"\r
+
+    \    }\r
+
+    \  ]\r
+
+    }"
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Status code is 200\", function () {\r
+
+      \    pm.response.to.have.status(200);\r
+
+      });\r
+
+      \r
+
+      const json = pm.response.json();\r
+
+      \r
+
+      pm.test(\"Has hoaDon\", function () {\r
+
+      \    pm.expect(json.hoaDon).to.exist;\r
+
+      });\r
+
+      \r
+
+      pm.test(\"Same maHoaDon\", function () {\r
+
+      \    pm.expect(json.hoaDon.maHoaDon).to.eql(pm.environment.get(\"maHoaDon\"));\r
+
+      });\r
+
+      \r
+
+      pm.test(\"Still PENDING\", function () {\r
+
+      \    pm.expect(json.hoaDon.trangThaiThanhToan).to.eql(\"PENDING\");\r
+
+      });"
+    language: text/javascript
+order: 4143701439434482

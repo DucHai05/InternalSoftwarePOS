@@ -1,0 +1,103 @@
+:root {
+  --indigo-600: #4f46e5;
+  --indigo-50: #eef2ff;
+  --slate-900: #0f172a;
+  --slate-800: #1e293b;
+  --slate-500: #64748b;
+  --slate-100: #f1f5f9;
+  --slate-50: #f8fafc;
+}
+
+.table-map-wrapper {
+  padding: 8px;
+  animation: fadeIn 0.4s ease-out;
+}
+
+/* Header & Legend */
+.map-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 24px;
+}
+
+.header-info h1 { font-size: 1.75rem; color: var(--slate-900); font-weight: 800; margin: 0; }
+.header-info p { color: var(--slate-500); font-size: 0.95rem; margin-top: 4px; }
+
+.map-legend {
+  display: flex;
+  gap: 20px;
+  background: white;
+  padding: 10px 20px;
+  border-radius: 12px;
+  border: 1px solid var(--slate-100);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--slate-500);
+}
+
+.legend-item { display: flex; align-items: center; gap: 8px; }
+.dot { width: 10px; height: 10px; border-radius: 50%; }
+.dot.empty { background: #e2e8f0; }
+.dot.busy { background: #ef4444; }
+.dot.pending { background: #f59e0b; }
+
+/* Category Tab Styling (Hải dán đè phần này) */
+.category-scroll {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 28px;
+  overflow-x: auto;
+  padding: 4px 0;
+}
+.category-scroll::-webkit-scrollbar { display: none; }
+
+.category-item {
+  padding: 10px 24px;
+  background: white;
+  border: 1px solid var(--slate-100);
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--slate-500);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+}
+
+.category-item:hover {
+  border-color: var(--indigo-600);
+  color: var(--indigo-600);
+  background: var(--indigo-50);
+}
+
+.category-item.active {
+  background: var(--indigo-600);
+  border-color: var(--indigo-600);
+  color: white;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+  transform: translateY(-1px);
+}
+
+/* Grid Bàn */
+.table-grid-modern {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.empty-state-map {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 100px 0;
+  color: var(--slate-400);
+}
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (max-width: 768px) {
+  .map-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .table-grid-modern { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+}

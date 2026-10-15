@@ -1,0 +1,200 @@
+:root {
+    --indigo-600: #4f46e5;
+    --indigo-700: #4338ca;
+    --indigo-50: #eef2ff;
+    --slate-900: #0f172a;
+    --slate-800: #1e293b;
+    --slate-700: #334155;
+    --slate-500: #64748b;
+    --slate-200: #e2e8f0;
+    --slate-100: #f1f5f9;
+    --slate-50: #f8fafc;
+    
+    --white: #ffffff;
+    --danger: #ef4444;
+    --success: #10b981;
+
+    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+}
+
+/* ===== LAYOUT ===== */
+.admin-container {
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    background-color: var(--slate-50); /* Màu nền sáng theo style của ông */
+    font-family: 'Inter', system-ui, sans-serif;
+    color: var(--slate-800);
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn { 
+    from { opacity: 0; transform: translateY(10px); } 
+    to { opacity: 1; transform: translateY(0); } 
+}
+
+.main-title {
+    text-align: left; /* Chỉnh lại canh trái cho hiện đại */
+    color: var(--slate-900);
+    font-weight: 800;
+    font-size: 1.75rem;
+    margin-bottom: 24px;
+}
+
+/* ===== FORM THÔNG TIN (INFO SECTION) ===== */
+.info-section {
+    flex-shrink: 0;
+    background: var(--white);
+    padding: 24px;
+    margin-bottom: 24px;
+    border-radius: 16px;
+    border: 1px solid var(--slate-100);
+    box-shadow: var(--shadow-md);
+    width: 100%;
+}
+
+.info-section legend {
+    font-weight: 700;
+    color: var(--indigo-600);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 16px;
+    display: block;
+}
+
+/* GRID FORM */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px 24px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.input-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--slate-500);
+}
+
+/* INPUT & SELECT */
+.input-group input,
+.input-group select {
+    padding: 10px 14px;
+    border: 1px solid var(--slate-200);
+    border-radius: 12px;
+    font-size: 0.9rem;
+    color: var(--slate-800);
+    background: var(--white);
+    transition: all 0.2s ease;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    outline: none;
+    border-color: var(--indigo-600);
+    box-shadow: 0 0 0 4px var(--indigo-50);
+}
+
+.input-group input.readonly-input {
+    background: var(--slate-50);
+    color: var(--slate-500);
+    cursor: not-allowed;
+}
+
+/* ===== NÚT BẤM (BUTTON GROUP) ===== */
+.button-group {
+    display: flex;
+    justify-content: flex-start;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.button-group button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-add { background: var(--indigo-600); color: white; }
+.btn-add:hover { background: var(--indigo-700); transform: translateY(-1px); }
+
+.btn-edit { background: var(--white); color: var(--indigo-600); border: 1px solid var(--indigo-50) !important; }
+.btn-edit:hover { background: var(--indigo-50); }
+
+.btn-delete { background: #fee2e2; color: var(--danger); }
+.btn-delete:hover { background: #fecaca; }
+
+.btn-reset { background: var(--slate-100); color: var(--slate-500); }
+
+/* ===== DANH SÁCH BẢNG (LIST SECTION) ===== */
+.list-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: var(--white);
+    padding: 24px;
+    border-radius: 16px;
+    border: 1px solid var(--slate-100);
+    box-shadow: var(--shadow-md);
+}
+
+.table-responsive {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.employee-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.employee-table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--slate-50);
+    padding: 12px 16px;
+    text-align: left;
+    color: var(--slate-500);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--slate-100);
+}
+
+.employee-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--slate-50);
+    font-size: 0.9rem;
+}
+
+/* ROW INTERACTION */
+.selectable-row:hover {
+    background: var(--slate-50);
+    cursor: pointer;
+}
+
+.active-row td {
+    background: var(--indigo-50) !important;
+    color: var(--indigo-600);
+    font-weight: 700;
+}
+
+.salary-col {
+    color: var(--slate-900);
+    font-weight: 700;
+}

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/EurekaServer" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/EurekaServer" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Order_POS" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/Order_POS" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/ServiceAPIGateway" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/ServiceAPIGateway" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/ServiceCafe" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/ServiceCafe" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/ServiceDoanhThu" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/ServiceDoanhThu" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/ServiceNotification" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/ServiceNotification" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/ServiceProduct" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/ServiceProduct" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/ServicePromotion" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/ServicePromotion" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/ServiceSalary" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/ServiceSalary" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/ServiceStore" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/ServiceStore" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/ServiceTable" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/ServiceTable" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/ServiceUser" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/ServiceUser" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

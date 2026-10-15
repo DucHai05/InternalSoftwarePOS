@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+html, body, #root {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.portal-container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* --- BÊN TRÁI (Hero) --- */
+.portal-hero-section {
+    width: 50%; /* Giảm nhẹ để form Register có thêm không gian */
+    height: 100%;
+    background: url('/cf.png') no-repeat center;
+    background-size: cover;
+}
+
+.hero-overlay {
+    background: linear-gradient(135deg, rgba(45, 36, 30, 0.92) 0%, rgba(85, 68, 56, 0.85) 100%);
+    height: 100%;
+    padding: 60px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+.hero-content { margin-top: -40px; }
+
+.brand-label {
+    color: #d4a373;
+    font-weight: 700;
+    letter-spacing: 4px;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.3;
+    color: #fff;
+}
+
+.highlight { color: #d4a373; }
+
+.hero-description p{
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #ffffff;
+    max-width: 450px;
+    margin-top: 20px;
+}
+
+.hero-footer {
+    position: absolute;
+    bottom: 40px;
+    display: flex;
+    gap: 30px;
+    font-size: 0.85rem;
+    color: #f3e9dc;
+    opacity: 0.5;
+}
+
+/* --- BÊN PHẢI (Form) --- */
+.portal-form-section {
+    width: 45%; /* Tăng nhẹ để form rộng rãi hơn */
+    height: 100%;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 50px; /* Giảm padding trên dưới */
+}
+
+/*.top-right-logo {*/
+/*    margin-bottom: 0px; !* Thu hẹp khoảng cách logo *!*/
+/*}*/
+
+/*.top-right-logo img {*/
+/*    height: 100px;*/
+/*    width: auto;*/
+/*}*/
+
+.form-wrapper {
+    width: 100%;
+    max-width: 420px;
+}
+
+.welcome-text-group {
+    text-align: center;
+    margin-bottom: 20px; /* Thu hẹp lại */
+}
+
+.form-welcome {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+/* Ẩn thanh cuộn xấu xí nhưng vẫn cho phép cuộn bằng chuột */
+.input-group-scroll {
+    max-height: 480px; /* Tăng độ cao tối đa để chứa đủ form */
+    overflow-y: auto;
+    padding-right: 5px;
+    margin-bottom: 15px;
+    scrollbar-width: none; /* Cho Firefox */
+    -ms-overflow-style: none;  /* Cho IE/Edge */
+}
+
+.input-group-scroll::-webkit-scrollbar {
+    display: none; /* Ẩn scrollbar hoàn toàn trên Chrome/Safari */
+}
+
+.input-field {
+    margin-bottom: 12px; /* Giảm từ 18px xuống 12px để tiết kiệm diện tích */
+}
+
+.input-field label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    font-size: 0.8rem; /* Nhỏ lại một xíu cho tinh tế */
+    color: #4a3f35;
+    padding-left: 5px;
+}
+
+.input-icon-wrapper input {
+    width: 100%;
+    padding: 12px 15px 12px 45px; /* Thu nhỏ padding trên dưới của input */
+    background: #fdfaf7;
+    border: 1px solid #ece0d1;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    color: grey;
+}
+
+/* Nút bấm gọn gàng hơn */
+.btn-group-portal {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.btn-portal-submit {
+    padding: 14px; /* Giảm độ dày nút */
+    font-size: 1rem;
+}
+
+.btn-outline-full {
+    padding: 10px;
+    font-size: 0.85rem;
+}
+
+.footer-link-text {
+    margin-top: 15px;
+    font-size: 0.85rem;
+}

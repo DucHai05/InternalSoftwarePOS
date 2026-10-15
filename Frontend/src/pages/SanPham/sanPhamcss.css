@@ -1,0 +1,172 @@
+:root {
+    --indigo-600: #4f46e5;
+    --indigo-700: #4338ca;
+    --indigo-50: #eef2ff;
+    --slate-900: #0f172a;
+    --slate-800: #1e293b;
+    --slate-600: #475569;
+    --slate-400: #94a3b8;
+    --slate-200: #e2e8f0;
+    --slate-100: #f1f5f9;
+    --slate-50: #f8fafc;
+    --white: #ffffff;
+    --success: #10b981;
+    --danger: #ef4444;
+}
+
+/* ===== CONTAINER ===== */
+.sanpham-container {
+    padding: 32px;
+    background-color: var(--slate-50);
+    min-height: 100vh;
+    font-family: 'Inter', system-ui, sans-serif;
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn { 
+    from { opacity: 0; transform: translateY(10px); } 
+    to { opacity: 1; transform: translateY(0); } 
+}
+
+/* ===== TOP BAR (Title & Search) ===== */
+.sanpham-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+}
+
+.sanpham-title {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--slate-900);
+    letter-spacing: -0.5px;
+}
+
+.action-bar {
+    display: flex;
+    gap: 12px;
+}
+
+/* INPUT & SELECT CUSTOM */
+.search-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.sanpham-input, .sanpham-select {
+    padding: 10px 16px;
+    border: 1.5px solid var(--slate-200);
+    border-radius: 12px;
+    font-size: 0.9rem;
+    outline: none;
+    transition: all 0.2s;
+    background: var(--white);
+    color: var(--slate-800);
+}
+
+.sanpham-input:focus, .sanpham-select:focus {
+    border-color: var(--indigo-600);
+    box-shadow: 0 0 0 4px var(--indigo-50);
+}
+
+/* BUTTONS */
+.btn-lado {
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-lado-success { background: var(--indigo-600); color: white; }
+.btn-lado-success:hover { background: var(--indigo-700); transform: translateY(-2px); }
+.btn-lado-success:active { transform: scale(0.96); }
+
+/* ===== TABLE CARD ===== */
+.sanpham-card {
+    background: var(--white);
+    border-radius: 20px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--slate-100);
+    overflow: hidden;
+}
+
+.sanpham-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.sanpham-table thead th {
+    background: var(--slate-50);
+    padding: 16px;
+    color: var(--slate-500);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid var(--slate-100);
+}
+
+.sanpham-table td {
+    padding: 16px;
+    border-bottom: 1px solid var(--slate-50);
+    color: var(--slate-800);
+    font-size: 0.95rem;
+}
+
+.sanpham-table tr:hover { background-color: #fafafa; }
+
+/* PRODUCT IMAGE */
+.sp-img-container {
+    width: 64px;
+    height: 64px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--slate-200);
+    background: var(--slate-100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.sp-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* BADGE STATUS */
+.badge-lado {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 800;
+}
+
+.bg-dang-ban { background: #d1fae5; color: var(--success); }
+.bg-tam-ngung { background: #fef3c7; color: #d97706; }
+
+/* ACTION BUTTONS */
+.btn-icon {
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-icon-edit { background: var(--indigo-50); color: var(--indigo-600); margin-right: 8px; }
+.btn-icon-edit:hover { background: var(--indigo-600); color: white; }
+
+.btn-icon-delete { background: #fee2e2; color: var(--danger); }
+.btn-icon-delete:hover { background: var(--danger); color: white; }

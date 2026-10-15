@@ -1,0 +1,58 @@
+$kind: http-request
+name: "TC-ORDER-03: Tạo order mới cho bàn"
+url: "{{baseUrl}}/api/cafe/orders/staff-create"
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \  \"maBan\": \"{{maBan}}\",\r
+
+    \  \"maCa\": \"{{maCa}}\",\r
+
+    \  \"items\": [\r
+
+    \    {\r
+
+    \      \"maSanPham\": \"{{maSanPham}}\",\r
+
+    \      \"soLuong\": 3,\r
+
+    \      \"giaBan\": 30000,\r
+
+    \      \"ghiChu\": \"\"\r
+
+    \    },\r
+
+    \    {\r
+
+    \      \"maSanPham\": \"{{maSanPham}}\",\r
+
+    \      \"soLuong\": 6,\r
+
+    \      \"giaBan\": 30000,\r
+
+    \      \"ghiChu\": \"2 Cốc ít đá\"\r
+
+    \    }\r
+
+    \  ]\r
+
+    }"
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Status 200\", () => pm.response.to.have.status(200));\r
+
+      const json = pm.response.json();\r
+
+      pm.expect(json.hoaDon).to.exist;\r
+
+      pm.environment.set(\"maHoaDon\", json.hoaDon.maHoaDon);\r
+
+      pm.test(\"Invoice is PENDING\", () => {\r
+
+      \  pm.expect(json.hoaDon.trangThaiThanhToan).to.eql(\"PENDING\");\r
+
+      });"
+    language: text/javascript
+order: 4465179457544379

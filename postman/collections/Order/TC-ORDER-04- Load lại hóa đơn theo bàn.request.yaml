@@ -1,0 +1,20 @@
+$kind: http-request
+name: "TC-ORDER-04: Load lại hóa đơn theo bàn"
+url: "{{baseUrl}}/api/cafe/orders/loadBan/{{maBan}}"
+method: GET
+body:
+  type: json
+  content: ""
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Status 200\", () => pm.response.to.have.status(200));\r
+
+      const json = pm.response.json();\r
+
+      pm.environment.set(\"maHoaDon\", json.maHoaDon);\r
+
+      pm.test(\"Has items\", () => pm.expect(json.items.length).to.be.greaterThan(0));\r
+
+      pm.environment.set(\"maChiTietHD\", json.items[0].maChiTietHD);"
+    language: text/javascript
+order: 1782743359251

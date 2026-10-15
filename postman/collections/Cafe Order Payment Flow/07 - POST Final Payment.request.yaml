@@ -1,0 +1,62 @@
+$kind: http-request
+name: 07 - POST Final Payment
+url: "{{baseUrl}}/api/cafe/payments/final-payment"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: "{\r
+
+    \  \"maHoaDon\": \"{{maHoaDon}}\",\r
+
+    \  \"maBan\": \"{{maBan}}\",\r
+
+    \  \"maCa\": \"{{maCa}}\",\r
+
+    \  \"phuongThucThanhToan\": \"{{phuongThucThanhToan}}\",\r
+
+    \  \"maKhuyenMai\": null,\r
+
+    \  \"tongTienSauKM\": {{tongTien}},\r
+
+    \  \"trangThaiThanhToan\": \"Paid\",\r
+
+    \  \"thoiGianThanhToan\": \"2026-06-29T10:00:00\",\r
+
+    \  \"items\": [\r
+
+    \    {\r
+
+    \      \"maSanPham\": \"{{maSanPham}}\",\r
+
+    \      \"soLuong\": 3,\r
+
+    \      \"giaBan\": 30000,\r
+
+    \      \"ghiChu\": \"test postman thanh toan\"\r
+
+    \    }\r
+
+    \  ]\r
+
+    }"
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Status code is 200\", function () {\r
+
+      \    pm.response.to.have.status(200);\r
+
+      });\r
+
+      \r
+
+      if (pm.response.code !== 200) {\r
+
+      \    console.log(\"Payment error response:\", pm.response.text());\r
+
+      \    postman.setNextRequest(null);\r
+
+      }"
+    language: text/javascript
+order: 4467502795316689

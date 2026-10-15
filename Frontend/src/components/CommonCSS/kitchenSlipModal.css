@@ -1,0 +1,214 @@
+/* --- LỚP PHỦ NỀN (OVERLAY) --- */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5000;
+    padding: 20px;
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* --- WRAPPER CHO PHIẾU --- */
+.kitchen-slip-wrapper {
+    width: 100%;
+    max-width: 360px; /* Độ rộng chuẩn của giấy in nhiệt */
+    animation: slipIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* --- TỜ GIẤY IN (PAPER) --- */
+.kitchen-paper {
+    background: #ffffff;
+    position: relative;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+    padding: 0;
+}
+
+/* --- HIỆU ỨNG RĂNG CƯA XÉ GIẤY --- */
+.paper-edge-top, .paper-edge-bottom {
+    height: 12px;
+    width: 100%;
+    background-image: linear-gradient(135deg, #ffffff 25%, transparent 25%), 
+                      linear-gradient(225deg, #ffffff 25%, transparent 25%);
+    background-size: 15px 30px;
+    background-position: 0 0;
+    position: absolute;
+    left: 0;
+    z-index: 2;
+}
+
+.paper-edge-top { top: -11px; transform: rotate(180deg); }
+.paper-edge-bottom { bottom: -11px; }
+
+/* --- NỘI DUNG BÊN TRONG PHIẾU --- */
+.slip-content {
+    padding: 30px 24px;
+    color: #1e293b;
+    /* Font chữ Mono tạo cảm giác máy in nhiệt thực tế */
+    font-family: 'JetBrains Mono', 'Courier New', monospace; 
+}
+
+/* Header Phiếu */
+.slip-header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.brand-mini { 
+    font-size: 0.65rem; 
+    font-weight: 800; 
+    color: #94a3b8; 
+    letter-spacing: 3px; 
+    margin-bottom: 4px;
+}
+
+.slip-header h2 {
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: #0f172a;
+    margin: 0 0 8px 0;
+}
+
+/* Badge trạng thái đơn */
+.slip-badge {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: white;
+    text-transform: uppercase;
+}
+.slip-badge.new { background: #0f172a; }
+.slip-badge.adjust { background: #f43f5e; animation: blink 1s infinite; }
+
+/* --- KHU VỰC THÔNG TIN (METADATA) --- */
+.slip-metadata {
+    font-size: 0.85rem;
+    color: #334155;
+    margin-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.meta-item { 
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+}
+
+.meta-item span { color: #64748b; }
+.meta-item strong { color: #0f172a; font-weight: 700; }
+
+.slip-divider {
+    text-align: center;
+    color: #cbd5e1;
+    letter-spacing: 2px;
+    margin: 15px 0;
+    user-select: none;
+}
+
+/* --- DANH SÁCH MÓN --- */
+.items-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.items-table th { 
+    font-size: 0.7rem; 
+    color: #94a3b8; 
+    text-transform: uppercase;
+    padding-bottom: 10px; 
+    border-bottom: 1px dashed #e2e8f0; 
+}
+
+.items-table td { 
+    padding: 12px 0; 
+    border-bottom: 1px solid #f1f5f9; 
+}
+
+.item-name { 
+    font-size: 0.95rem; 
+    font-weight: 700; 
+    color: #1e293b; 
+    line-height: 1.3;
+}
+
+.item-qty { 
+    font-size: 1.15rem; 
+    font-weight: 800; 
+    color: #0f172a; 
+}
+
+.item-note { 
+    font-size: 0.75rem; 
+    color: #f43f5e; 
+    font-weight: 700; 
+    display: block; 
+    margin-top: 2px;
+}
+
+/* Trạng thái món bị hủy */
+.item-cancel { opacity: 0.4; }
+.item-cancel .item-name { text-decoration: line-through; }
+
+/* --- CỤM NÚT BẤM (ACTIONS) --- */
+.slip-actions {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.btn-confirm-print {
+    background: #4f46e5;
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 14px;
+    font-weight: 800;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(79, 70, 229, 0.25);
+    transition: all 0.2s;
+}
+
+.btn-confirm-print:hover {
+    background: #4338ca;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(79, 70, 229, 0.35);
+}
+
+.btn-cancel-slip {
+    background: transparent;
+    color: #94a3b8;
+    border: none;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    padding: 8px;
+    transition: color 0.2s;
+}
+
+.btn-cancel-slip:hover { color: #64748b; }
+
+/* --- HIỆU ỨNG (ANIMATIONS) --- */
+@keyframes slipIn {
+    from { transform: translateY(60px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes blink { 50% { opacity: 0.7; } }

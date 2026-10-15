@@ -1,0 +1,32 @@
+$kind: http-request
+name: "TC-ORDER-05: Cập nhật số lượng món"
+url: "{{baseUrl}} /api/cafe/orders/staff-create"
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \  \"maHoaDon\": \"{{maHoaDon}}\",\r
+
+    \  \"maBan\": \"{{maBan}}\",\r
+
+    \  \"maCa\": \"{{maCa}}\",\r
+
+    \  \"items\": [\r
+
+    \    {\r
+
+    \      \"maSanPham\": \"{{maSanPham}}\",\r
+
+    \      \"soLuong\": 36,\r
+
+    \      \"giaBan\": 30000,\r
+
+    \      \"ghiChu\": \"tang so luong\"\r
+
+    \    }\r
+
+    \  ]\r
+
+    }"
+order: 4470539443615797

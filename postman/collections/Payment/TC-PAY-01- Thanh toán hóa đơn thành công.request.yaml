@@ -1,0 +1,52 @@
+$kind: http-request
+name: "TC-PAY-01: Thanh toán hóa đơn thành công"
+url: "{{baseUrl}}/api/cafe/payments/final-payment"
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \  \"maHoaDon\": \"{{maHoaDon}}\",\r
+
+    \  \"maBan\": \"{{maBan}}\",\r
+
+    \  \"maCa\": \"{{maCa}}\",\r
+
+    \  \"phuongThucThanhToan\": \"{{phuongThucThanhToan}}\",\r
+
+    \  \"maKhuyenMai\": null,\r
+
+    \  \"tongTienSauKM\": 90000,\r
+
+    \  \"trangThaiThanhToan\": \"Paid\",\r
+
+    \  \"thoiGianThanhToan\": \"2026-06-29T10:00:00\",\r
+
+    \  \"items\": [\r
+
+    \    {\r
+
+    \      \"maSanPham\": \"{{maSanPham}}\",\r
+
+    \      \"soLuong\": 3,\r
+
+    \      \"giaBan\": 30000,\r
+
+    \      \"ghiChu\": \"tang so luong\"\r
+
+    \    }\r
+
+    \  ]\r
+
+    }"
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Status 200\", () => pm.response.to.have.status(200));\r
+
+      pm.test(\"Payment success message\", () => {\r
+
+      \  pm.expect(pm.response.text()).to.include(\"Thanh toán\");\r
+
+      });"
+    language: text/javascript
+order: 1782745651732

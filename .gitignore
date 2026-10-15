@@ -1,0 +1,32 @@
+# --- IDE & System ---
+.idea/
+.vscode/
+*.swp
+*.iml
+IntelliJ\ IDEA\ 2025.3.3/
+Thumbs.db
+.DS_Store
+
+# --- Backend (SpringBoots) ---
+Backend/.gradle/
+Backend/build/
+Backend/out/
+Backend/target/
+Backend/.mvn/
+Backend/*.jar
+Backend/bin/
+
+# --- Frontend (ReactJS) ---
+Frontend/node_modules/
+Frontend/build/
+Frontend/dist/
+Frontend/.env.local
+Frontend/.env.development.local
+Frontend/.env.test.local
+Frontend/.env.production.local
+
+# --- Logs ---
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

@@ -1,0 +1,33 @@
+/* --- FIX DỨT ĐIỂM: GIỎ HÀNG 2 CỘT - 2 HÀNG --- */
+.cart-footer {
+  padding: 20px;
+  background: #ffffff;
+  border-top: 1px solid var(--slate-100);
+  margin-top: auto;
+}
+
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 0 4px;
+}
+
+.total-price {
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: var(--indigo-600);
+}
+
+/* Lưới 2x2 - Ép chết khung */
+.button-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Chia đôi bằng chẹn */
+  grid-template-rows: 50px 50px;   /* Ép 2 hàng, mỗi hàng cao 50px */
+  gap: 10px;
+  width: 100%;
+}
+
+
+

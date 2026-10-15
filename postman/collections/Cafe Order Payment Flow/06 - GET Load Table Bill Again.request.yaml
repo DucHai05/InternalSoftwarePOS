@@ -1,0 +1,62 @@
+$kind: http-request
+name: 06 - GET Load Table Bill Again
+url: "{{baseUrl}}/api/cafe/orders/loadBan/{{maBan}}"
+method: GET
+body:
+  type: json
+  content: ""
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Status code is 200\", function () {\r
+
+      \    pm.response.to.have.status(200);\r
+
+      });\r
+
+      \r
+
+      const bill = pm.response.json();\r
+
+      \r
+
+      pm.test(\"Has items\", function () {\r
+
+      \    pm.expect(bill.items).to.be.an(\"array\");\r
+
+      \    pm.expect(bill.items.length).to.be.greaterThan(0);\r
+
+      });\r
+
+      \r
+
+      pm.test(\"Quantity updated to 3\", function () {\r
+
+      \    pm.expect(bill.items[0].soLuong).to.eql(3);\r
+
+      });\r
+
+      \r
+
+      const calculatedTongTien = bill.items.reduce((sum, item) => {\r
+
+      \    return sum + (item.soLuong * item.giaBan);\r
+
+      }, 0);\r
+
+      \r
+
+      pm.test(\"Calculated tongTien is 90000\", function () {\r
+
+      \    pm.expect(calculatedTongTien).to.eql(90000);\r
+
+      });\r
+
+      \r
+
+      pm.environment.set(\"tongTien\", calculatedTongTien);\r
+
+      \r
+
+      console.log(\"Saved tongTien:\", calculatedTongTien);"
+    language: text/javascript
+order: 4408315615335573

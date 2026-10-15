@@ -1,0 +1,58 @@
+$kind: http-request
+name: 04 - GET Load Table Bill
+url: "{{baseUrl}}/api/cafe/orders/loadBan/{{maBan}}"
+method: GET
+body:
+  type: json
+  content: ""
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Status code is 200\", function () {\r
+
+      \    pm.response.to.have.status(200);\r
+
+      });\r
+
+      \r
+
+      const bill = pm.response.json();\r
+
+      \r
+
+      pm.test(\"Has maHoaDon\", function () {\r
+
+      \    pm.expect(bill.maHoaDon).to.exist;\r
+
+      });\r
+
+      \r
+
+      pm.test(\"Has items\", function () {\r
+
+      \    pm.expect(bill.items).to.be.an(\"array\");\r
+
+      \    pm.expect(bill.items.length).to.be.greaterThan(0);\r
+
+      });\r
+
+      \r
+
+      pm.test(\"First item quantity is 2\", function () {\r
+
+      \    pm.expect(bill.items[0].soLuong).to.eql(2);\r
+
+      });\r
+
+      \r
+
+      pm.environment.set(\"maHoaDon\", bill.maHoaDon);\r
+
+      pm.environment.set(\"maChiTietHD\", bill.items[0].maChiTietHD);\r
+
+      \r
+
+      console.log(\"Saved maHoaDon:\", bill.maHoaDon);\r
+
+      console.log(\"Saved maChiTietHD:\", bill.items[0].maChiTietHD);"
+    language: text/javascript
+order: 3951021569389314

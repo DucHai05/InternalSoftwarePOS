@@ -1,0 +1,116 @@
+/* --- MODERN PROMO TABLE --- */
+.promo-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 8px;
+}
+
+/* Header của bảng */
+.promo-table th {
+  background-color: var(--slate-50);
+  padding: 16px 20px;
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--slate-400);
+  border-bottom: 1px solid var(--slate-100);
+}
+
+/* Các ô dữ liệu */
+.promo-table td {
+  padding: 18px 20px;
+  background-color: white;
+  border-bottom: 1px solid var(--slate-50);
+  color: var(--slate-600);
+  font-size: 0.95rem;
+  vertical-align: middle;
+}
+
+/* Hiệu ứng dòng khi di chuột qua */
+.promo-table tbody tr:hover td {
+  background-color: var(--slate-50);
+  cursor: default;
+}
+
+/* Tên khuyến mãi nổi bật */
+.promo-table td strong {
+  color: var(--slate-900);
+  font-weight: 700;
+}
+
+/* --- PERCENT TAG (Mức giảm) --- */
+.percent-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  background-color: var(--indigo-50);
+  color: var(--indigo-600);
+  border-radius: 8px;
+  font-weight: 800;
+  font-size: 0.85rem;
+  border: 1px solid var(--indigo-100);
+}
+
+/* --- STATUS PILL (Trạng thái) --- */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.status-pill.active {
+  background-color: #ecfdf5;
+  color: #059669;
+}
+
+.status-pill.inactive {
+  background-color: #fff1f2;
+  color: #e11d48;
+}
+
+/* --- CỤM NÚT THAO TÁC --- */
+.edit-btn, .del-btn-table {
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+}
+
+.edit-btn {
+  background-color: white;
+  color: var(--indigo-600);
+  border: 1px solid var(--indigo-100);
+  margin-right: 8px;
+}
+
+.edit-btn:hover {
+  background-color: var(--indigo-600);
+  color: white;
+  border-color: var(--indigo-600);
+}
+
+.del-btn-table {
+  background-color: white;
+  color: var(--slate-400);
+  border: 1px solid var(--slate-200);
+}
+
+.del-btn-table:hover {
+  background-color: #fef2f2;
+  color: #ef4444;
+  border-color: #fecaca;
+}
+
+/* Bo góc cho hàng đầu và hàng cuối */
+.promo-table tr:first-child th:first-child { border-top-left-radius: 12px; }
+.promo-table tr:first-child th:last-child { border-top-right-radius: 12px; }

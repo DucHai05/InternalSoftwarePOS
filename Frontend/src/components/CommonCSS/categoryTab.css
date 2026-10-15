@@ -1,0 +1,63 @@
+/* src/components/Common/categoryTab.css */
+
+.category-scroll {
+    display: flex;
+    gap: 12px;
+    padding: 8px 24px 20px; /* Thêm padding bottom để không dính vào danh sách món */
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Ẩn thanh cuộn nhưng vẫn cho phép lướt trên mọi trình duyệt */
+.category-scroll::-webkit-scrollbar {
+    display: none;
+}
+.category-scroll {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.category-item {
+    padding: 10px 20px;
+    background: var(--white, #ffffff);
+    border: 1.5px solid var(--slate-200);
+    border-radius: 14px; /* Bo góc hiện đại hơn kiểu tròn xoe cũ */
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--slate-600);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Hiệu ứng khi di chuột qua */
+.category-item:hover {
+    background: var(--slate-50);
+    border-color: var(--slate-300);
+    color: var(--slate-900);
+    transform: translateY(-1px);
+}
+
+/* Trạng thái Đang chọn (Active) */
+.category-item.active {
+    background: var(--indigo-600);
+    border-color: var(--indigo-600);
+    color: white;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+    transform: translateY(-1px);
+}
+
+/* Hiệu ứng khi nhấn giữ (Click) */
+.category-item:active {
+    transform: scale(0.95);
+}
+
+.cat-name {
+    letter-spacing: 0.02em;
+    text-transform: capitalize; /* Viết hoa chữ cái đầu cho chuyên nghiệp */
+}

@@ -1,0 +1,5 @@
+$kind: http-request
+name: "TC-ORDER-07: Lỗi xóa món không tồn tại"
+url: "{{baseUrl}}/api/cafe/orders/remove-item/INVALID_ID"
+method: DELETE
+order: 4498085737564956

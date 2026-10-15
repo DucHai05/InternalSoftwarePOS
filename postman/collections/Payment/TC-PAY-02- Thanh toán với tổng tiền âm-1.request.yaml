@@ -1,0 +1,22 @@
+$kind: http-request
+name: "TC-PAY-02: Thanh toán với tổng tiền âm"
+url: "{{baseUrl}}/api/cafe/payments/final-payment"
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \  \"maHoaDon\": \"{{maHoaDon}}\",\r
+
+    \  \"maBan\": \"{{maBan}}\",\r
+
+    \  \"maCa\": \"{{maCa}}\",\r
+
+    \  \"phuongThucThanhToan\": \"TIEN_MAT\",\r
+
+    \  \"tongTienSauKM\": -10000,\r
+
+    \  \"items\": []\r
+
+    }"
+order: 1269224994269346

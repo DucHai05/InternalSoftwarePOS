@@ -1,0 +1,34 @@
+$kind: http-request
+name: 02 - GET Open Shift
+url: "{{baseUrl}}/api/doanhthu/ca/getMaCaDangMo"
+method: GET
+body:
+  type: json
+  content: ""
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Status code is 200\", function () {\r
+
+      \    pm.response.to.have.status(200);\r
+
+      });\r
+
+      \r
+
+      const maCa = pm.response.text();\r
+
+      \r
+
+      pm.test(\"maCa is not empty\", function () {\r
+
+      \    pm.expect(maCa).to.not.be.empty;\r
+
+      });\r
+
+      \r
+
+      pm.environment.set(\"maCa\", maCa);\r
+
+      console.log(\"Saved maCa:\", maCa);"
+    language: text/javascript
+order: 2139596915588301

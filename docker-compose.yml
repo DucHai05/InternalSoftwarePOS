@@ -1,0 +1,241 @@
+services:
+  # ==========================================
+  # 0. DATABASE: SQL SERVER
+  # ==========================================
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: cafe-database
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=CafePos@123456
+    ports:
+      - "1434:1433" # Đổi lại 1433 để đồng bộ với URL kết nối bên dưới
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+      # MAPPING FILE KHỞI TẠO VÀO CONTAINER
+      - ./db-init/init.sql:/usr/config/init.sql
+      - ./db-init/entrypoint.sh:/usr/config/entrypoint.sh
+    networks:
+      - cafe-network
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P \"$${MSSQL_SA_PASSWORD}\" -C -Q \"SELECT 1\" || /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P \"$${MSSQL_SA_PASSWORD}\" -Q \"SELECT 1\" || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
+    # LỆNH CHẠY SCRIPT ĐỢI DB KHỞI ĐỘNG XONG MỚI BƠM DỮ LIỆU
+    entrypoint: /bin/bash -c "/opt/mssql/bin/sqlservr & /usr/config/entrypoint.sh & wait"
+
+  # ==========================================
+  # EUREKA SERVER: Trung tâm đăng ký dịch vụ
+  # ==========================================
+  eureka-server:
+    build: ./Backend/EurekaServer
+    container_name: cafe-eureka-server
+    ports:
+      - "8761:8761"
+    networks:
+      - cafe-network
+
+  # ==========================================
+  # API GATEWAY: Cổng duy nhất gọi từ ReactJS
+  # ==========================================
+  api-gateway:
+    build: ./Backend/ServiceAPIGateway
+    container_name: cafe-api-gateway
+    ports:
+      - "8080:8080"
+    depends_on:
+      eureka-server:
+        condition: service_started
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+      - SERVICE_USER_URI=http://service-user:8086
+    networks:
+      - cafe-network
+
+  # ==========================================
+  # CÁC SERVICE NGHIỆP VỤ
+  # ==========================================
+
+  service-cafe:
+    build: ./Backend/ServiceCafe
+    container_name: cafe-service-cafe
+    ports:
+      - "8081:8081"
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+      eureka-server:
+        condition: service_started
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:sqlserver://sqlserver:1433;databaseName=ServiceCafe;encrypt=true;trustServerCertificate=true;
+      - SPRING_DATASOURCE_USERNAME=sa
+      - SPRING_DATASOURCE_PASSWORD=CafePos@123456
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    networks:
+      - cafe-network
+
+  service-promotion:
+    build: ./Backend/ServicePromotion
+    container_name: cafe-service-promotion
+    ports:
+      - "8082:8082"
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+      eureka-server:
+        condition: service_started
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:sqlserver://sqlserver:1433;databaseName=ServicePromotion;encrypt=true;trustServerCertificate=true;
+      - SPRING_DATASOURCE_USERNAME=sa
+      - SPRING_DATASOURCE_PASSWORD=CafePos@123456
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    networks:
+      - cafe-network
+
+  service-table:
+    build: ./Backend/ServiceTable
+    container_name: cafe-service-table
+    ports:
+      - "8083:8083"
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+      eureka-server:
+        condition: service_started
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:sqlserver://sqlserver:1433;databaseName=ServiceTable;encrypt=true;trustServerCertificate=true;
+      - SPRING_DATASOURCE_USERNAME=sa
+      - SPRING_DATASOURCE_PASSWORD=CafePos@123456
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    networks:
+      - cafe-network
+
+  service-doanh-thu:
+    build: ./Backend/ServiceDoanhThu
+    container_name: cafe-service-doanh-thu
+    ports:
+      - "8084:8084"
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+      eureka-server:
+        condition: service_started
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:sqlserver://sqlserver:1433;databaseName=ServiceDoanhThu;encrypt=true;trustServerCertificate=true;
+      - SPRING_DATASOURCE_USERNAME=sa
+      - SPRING_DATASOURCE_PASSWORD=CafePos@123456
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    networks:
+      - cafe-network
+
+  service-salary:
+    build: ./Backend/ServiceSalary
+    container_name: cafe-service-salary
+    ports:
+      - "8085:8085"
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+      eureka-server:
+        condition: service_started
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:sqlserver://sqlserver:1433;databaseName=ServiceSalary;encrypt=true;trustServerCertificate=true;
+      - SPRING_DATASOURCE_USERNAME=sa
+      - SPRING_DATASOURCE_PASSWORD=CafePos@123456
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    networks:
+      - cafe-network
+
+  service-user:
+    build: ./Backend/ServiceUser
+    container_name: cafe-service-user
+    ports:
+      - "8086:8086"
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+      eureka-server:
+        condition: service_started
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:sqlserver://sqlserver:1433;databaseName=ServiceUser;encrypt=true;trustServerCertificate=true;
+      - SPRING_DATASOURCE_USERNAME=sa
+      - SPRING_DATASOURCE_PASSWORD=CafePos@123456
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    networks:
+      - cafe-network
+
+  service-product:
+    build: ./Backend/ServiceProduct
+    container_name: cafe-service-product
+    ports:
+      - "8087:8087"
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+      eureka-server:
+        condition: service_started
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:sqlserver://sqlserver:1433;databaseName=ServiceProduct;encrypt=true;trustServerCertificate=true;
+      - SPRING_DATASOURCE_USERNAME=sa
+      - SPRING_DATASOURCE_PASSWORD=CafePos@123456
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    networks:
+      - cafe-network
+
+  service-store:
+    build: ./Backend/ServiceStore
+    container_name: cafe-service-store
+    ports:
+      - "8088:8088"
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+      eureka-server:
+        condition: service_started
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:sqlserver://sqlserver:1433;databaseName=ServiceStore;encrypt=true;trustServerCertificate=true;
+      - SPRING_DATASOURCE_USERNAME=sa
+      - SPRING_DATASOURCE_PASSWORD=CafePos@123456
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    networks:
+      - cafe-network
+
+  service-notification:
+    build: ./Backend/ServiceNotification
+    container_name: cafe-service-notification
+    ports:
+      - "8089:8089"
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+      eureka-server:
+        condition: service_started
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:sqlserver://sqlserver:1433;databaseName=ServiceNotification;encrypt=true;trustServerCertificate=true;
+      - SPRING_DATASOURCE_USERNAME=sa
+      - SPRING_DATASOURCE_PASSWORD=CafePos@123456
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    networks:
+      - cafe-network
+  # ==========================================
+  # FRONTEND: UI REACTJS / VITE
+  # ==========================================
+  cafe-ui:
+    build: ./Frontend # <-- Sửa lại đường dẫn này cho đúng với thư mục chứa Dockerfile UI của bạn
+    container_name: cafe-web-ui
+    environment:
+      - VITE_PROXY_TARGET=http://api-gateway:8080
+    ports:
+      - "5173:5173"
+    depends_on:
+      - api-gateway # UI sẽ đợi cổng API Gateway bật lên trước
+    networks:
+      - cafe-network
+networks:
+  cafe-network:
+    driver: bridge
+
+volumes:
+  sqlserver_data:

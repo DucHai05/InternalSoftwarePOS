@@ -1,0 +1,5 @@
+$kind: http-request
+name: "TC-ORDER-06: Xóa món khỏi hóa đơn"
+url: "{{baseUrl}}/api/cafe/orders/remove-item/{{maChiTietHD}}"
+method: DELETE
+order: 4493352095113779

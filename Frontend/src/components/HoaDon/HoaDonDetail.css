@@ -1,0 +1,125 @@
+﻿.receipt-container {
+  max-width: 450px;
+  margin: 20px auto;
+  padding: 24px;
+  background: #fff;
+  border: 1px solid #f0f0f0;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+.receipt-title {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+/* Phần Header: Đẩy text sang 2 bên */
+.receipt-header-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.receipt-header-row .label {
+  font-weight: 600;
+  color: #555;
+}
+
+.receipt-header-row .value {
+  font-weight: 500;
+  color: #000;
+  text-align: right;
+}
+
+/* Table: Căn chỉnh lại các cột */
+.receipt-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 20px 0;
+  font-size: 0.85rem;
+}
+
+.receipt-table thead th {
+  background-color: #2980b9; /* Màu xanh như hình */
+  color: #ffffff;
+  padding: 10px 5px;
+  text-align: left;
+}
+
+.receipt-table thead th:first-child { border-radius: 6px 0 0 0; }
+.receipt-table thead th:last-child { border-radius: 0 6px 0 0; text-align: right; }
+
+.receipt-table td {
+  padding: 12px 5px;
+  border-bottom: 1px dashed #eee;
+}
+
+.receipt-table .text-center { text-align: center; }
+.receipt-table .text-right { text-align: right; }
+
+/* Box Summary phía dưới */
+.receipt-summary-box {
+  background-color: #f8fbff;
+  border: 1px solid #e3f2fd;
+  border-radius: 12px;
+  padding: 15px;
+  margin-top: 10px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+}
+
+.summary-row:last-child { margin-bottom: 0; }
+
+.summary-row .label { color: #666; }
+.summary-row .value { font-weight: 600; color: #000; }
+
+.summary-row.total {
+  border-top: 1px solid #ccc;
+  margin-top: 5px;
+  padding-top: 10px;
+}
+
+.summary-row.total .value {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #d32f2f; /* Màu đỏ cho tổng tiền nếu muốn nổi bật */
+}
+
+/* Nút bấm */
+.receipt-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: 1px solid #333;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-primary { text-align:center; background-color: #2980b9; color: #fff; }
+
+@media print {
+  .receipt-actions { display: none; }
+  .receipt-container { box-shadow: none; border: none; max-width: 100%; }
+}

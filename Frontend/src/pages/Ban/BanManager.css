@@ -1,0 +1,282 @@
+.manager-wrapper {
+  padding: 16px; /* Tăng nhẹ padding cho thoáng */
+  animation: fadeIn 0.4s ease-out;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.manager-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.header-info h2 {
+  font-size: 1.5rem;
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.header-info p {
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.header-info span {
+  color: #4f46e5;
+  font-weight: 600;
+}
+
+/* Form Card */
+.form-card {
+  background: white;
+  padding: 24px;
+  border-radius: 16px;
+  border: 1px solid #f1f5f9;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  margin-bottom: 24px;
+}
+
+.form-card form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-end;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  min-width: 200px;
+}
+
+.input-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+.input-group input, .input-group select {
+  padding: 10px 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  font-family: inherit;
+  transition: all 0.2s;
+  background: #f8fafc;
+}
+
+.input-group input:focus, .input-group select:focus {
+  border-color: #4f46e5;
+  background: white;
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+}
+
+/* Buttons */
+.btn-primary {
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  color: white;
+  border: none;
+  padding: 11px 24px;
+  border-radius: 10px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.3);
+  transform: translateY(-1px);
+}
+.btn-refresh {
+  background: white;
+  border: 1px solid #e2e8f0;
+  color: var(--slate-600);
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-refresh:hover { background: var(--slate-50); border-color: var(--indigo-600); color: var(--indigo-600); }
+/* Container bao quanh 2 nút Cập nhật và Hủy */
+.form-actions {
+  display: flex;
+  gap: 12px;           /* Tạo khoảng cách 12px giữa 2 nút */
+  align-items: center; /* Căn giữa theo chiều dọc */
+  margin-top: 8px;     /* Khoảng cách nhẹ với lề trên nếu cần */
+}
+
+/* Đảm bảo btn-ghost có kích thước tương đồng để không lệch hàng */
+.btn-ghost {
+  background: white;   /* Nên để nền trắng thay vì none để che lấp lề nếu bị đè */
+  border: 1px solid #e2e8f0;
+  color: #64748b;
+  padding: 11px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;       /* Thêm flex để căn icon/chữ bên trong nếu có */
+  align-items: center;
+  height: 46px;        /* Ép cùng chiều cao với btn-primary (11*2 + line-height) */
+}
+
+.btn-ghost:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  color: #1e293b;
+}
+
+/* Card bao ngoài: Bỏ padding để bảng tràn ra sát viền card nhìn sẽ chắc chắn hơn */
+.table-card {
+    background: white;
+    border-radius: 16px;
+    border: 1px solid #f1f5f9;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); 
+    display: block !important;
+    overflow: hidden;
+    padding: 0 !important;
+    min-height: auto !important;
+
+    /* THÊM DÒNG NÀY: Để chặn mọi hiệu ứng truyền từ cha hoặc các hiệu ứng mặc định */
+    transition: none !important;
+    transform: none !important;
+    user-select: none; /* Ngăn bôi đen khi nhấn nhanh nhiều lần */
+}
+
+/* Đảm bảo khi nhấn vào card thì nó không được phép biến đổi */
+.table-card:active {
+    transform: none !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Tối ưu dòng có thể nhấn */
+.clickable-row {
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background-color: white;
+}
+
+/* Khi di chuột vào dòng: Chỉ đổi màu nhẹ để xác định vùng nhấn */
+.clickable-row:hover {
+    background-color: #f1f5f9 !important; /* Màu xám rất nhạt */
+}
+
+/* Khi nhấn giữ (Active): Tạo cảm giác nút bấm */
+.clickable-row:active {
+    background-color: #e2e8f0;
+    transform: scale(0.998); /* Nhấn lún xuống cực nhẹ */
+}
+
+/* Đảm bảo các ô td có padding vừa phải để không làm bảng quá dài */
+.modern-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.modern-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0 !important;     /* Triệt tiêu margin trên của bảng */
+}
+
+.modern-table th {
+    background: #f8fafc;
+    padding: 12px 16px;           /* Giảm bớt padding th cho gọn */
+    text-align: left;
+    vertical-align: middle;       /* Đảm bảo chữ nằm giữa ô */
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.modern-table td {
+  padding: 16px;
+  color: #334155;
+  border-bottom: 1px solid #f1f5f9;
+}
+.modern-table tbody tr {
+  transition: background-color 0.2s;
+  cursor: pointer; /* Biến chuột thành hình bàn tay */
+}
+.modern-table tbody tr:hover {
+  background-color: #f8fafc; /* Màu nền nhẹ khi di chuột vào */
+}
+.modern-table tr:last-child td { border: none; }
+
+.font-bold { font-weight: 700; color: #1e293b; }
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 99px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.dot { width: 6px; height: 6px; border-radius: 50%; }
+
+.status-active { background: #ecfdf5; color: #059669; }
+.status-active .dot { background: #10b981; }
+
+.status-maintenance { background: #fff7ed; color: #d97706; }
+.status-maintenance .dot { background: #f59e0b; }
+
+/* Action Buttons */
+.actions-cell {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+/* .action-btn {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+} */
+/* 
+.action-btn.edit { background: #eef2ff; color: #4f46e5; }
+.action-btn.edit:hover { background: #4f46e5; color: white; }
+
+.action-btn.delete { background: #fef2f2; color: #ef4444; }
+.action-btn.delete:hover { background: #ef4444; color: white; } */
+
+/* Empty States & Toasts */
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+  color: #94a3b8;
+}
+
+.toast-message {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.toast-message.success { background: #ecfdf5; color: #059669; border: 1px solid #a7f3d0; }
+.toast-message.error { background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; }
+
+.spin { animation: spin 1s linear infinite; }
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }

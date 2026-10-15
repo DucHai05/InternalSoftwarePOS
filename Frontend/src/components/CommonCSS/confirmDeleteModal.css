@@ -1,0 +1,116 @@
+/* --- LỚP PHỦ MỜ NỀN (OVERLAY) --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(15, 23, 42, 0.5); /* Màu Slate-900 với độ trong suốt */
+  backdrop-filter: blur(4px); /* Làm mờ nền phía sau cực sang */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  animation: fadeIn 0.2s ease-out;
+}
+
+/* --- KHỐI NỘI DUNG MODAL --- */
+.confirm-modal-content {
+  background: white;
+  width: 100%;
+  max-width: 400px;
+  padding: 32px;
+  border-radius: 24px;
+  text-align: center;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  animation: modalSlideUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Icon cảnh báo */
+.warning-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.confirm-modal-content h3 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--slate-900);
+  margin-bottom: 12px;
+}
+
+.confirm-modal-content p {
+  font-size: 0.95rem;
+  color: var(--slate-500);
+  line-height: 1.5;
+  margin: 4px 0;
+}
+
+.confirm-modal-content strong {
+  color: var(--indigo-600);
+  font-weight: 700;
+}
+
+/* --- CỤM NÚT BẤM --- */
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.modal-actions button {
+  flex: 1;
+  height: 48px;
+  border: none;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+/* Nút Quay lại (Thoát) */
+.btn-cancel {
+  background-color: var(--slate-100);
+  color: var(--slate-600);
+}
+
+.btn-cancel:hover {
+  background-color: var(--slate-200);
+  color: var(--slate-900);
+}
+
+/* Nút Đồng ý hủy (Nguy hiểm) */
+.btn-danger {
+  background-color: #ef4444; /* Màu đỏ Danger rực rỡ */
+  color: white;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+.btn-danger:hover {
+  background-color: #dc2626;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(239, 68, 68, 0.4);
+}
+
+.btn-danger:active {
+  transform: translateY(0);
+}
+
+/* --- HIỆU ỨNG ANIMATION --- */
+@keyframes modalSlideUp {
+  from {
+    transform: translateY(20px) scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

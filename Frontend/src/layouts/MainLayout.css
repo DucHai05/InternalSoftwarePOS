@@ -1,0 +1,367 @@
+/* MainLayout.css - HAI POS Modern Dashboard System */
+
+:root {
+  /* Bảng màu Modern Pro (Indigo & Slate) */
+  --primary: #4f46e5;            /* Indigo 600 */
+  --primary-light: #eef2ff;      /* Indigo 50 */
+  --sidebar-bg: #ffffff;         /* Trắng tinh khiết */
+  --sidebar-border: #f1f5f9;     /* Slate 100 */
+  --bg-app: #f8fafc;             /* Slate 50 */
+  --text-main: #1e293b;          /* Slate 800 - Đậm hơn cho nền trắng */
+  --text-muted: #64748b;         /* Slate 500 */
+  --surface: #ffffff;
+  --border: #e2e8f0;
+
+  /* Shadow mềm mại để tách lớp */
+  --shadow-sidebar: 4px 0 24px rgba(0, 0, 0, 0.02);
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  
+  --font-family: 'Be Vietnam Pro', 'Inter', system-ui, sans-serif;
+}
+
+/* ... Phần chung (giữ nguyên) ... */
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+.pos-app { display: flex; width: 100vw; height: 100vh; overflow: hidden; font-family: var(--font-family); color: var(--text-main); background-color: var(--bg-app); }
+
+/* --- SIDEBAR STYLE (Modern White Style) --- */
+.pos-sidebar {
+  width: 260px;
+  background-color: var(--sidebar-bg);
+  display: flex;
+  flex-direction: column;
+  padding: 24px 16px;
+  flex-shrink: 0;
+  border-right: 1px solid var(--sidebar-border);
+  box-shadow: var(--shadow-sidebar);
+  
+  /* THÊM 2 DÒNG NÀY ĐỂ BẬT SCROLL CẦN THIẾT */
+  overflow-y: auto; 
+  overflow-x: hidden;
+}
+
+/* CUSTOM THANH CUỘN CHO SIDEBAR (Ẩn tinh tế, chỉ hiện mờ mờ) */
+.pos-sidebar::-webkit-scrollbar {
+  width: 4px; /* Thanh cuộn cực nhỏ cho thanh lịch */
+}
+
+.pos-sidebar::-webkit-scrollbar-track {
+  background: transparent; /* Nền trong suốt */
+}
+
+.pos-sidebar::-webkit-scrollbar-thumb {
+  background: var(--border); /* Màu xám nhạt */
+  border-radius: 10px;
+}
+
+.pos-sidebar::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted); /* Đậm lên chút khi di chuột vào */
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px 32px;
+  color: #0f172a;
+  font-weight: 800;
+  font-size: 1.2rem;
+  letter-spacing: -0.02em;
+}
+
+.logo-box {
+  /* 1. THÊM KÍCH THƯỚC VÀ HIỆN THỊ CƠ BẢN */
+  width: 200px;       /* Chiều rộng của khung (Bạn có thể tăng lên 56px nếu muốn to hơn) */
+  height: 100px;      /* Chiều cao của khung (Nên để bằng chiều rộng tạo hình vuông) */
+  border-radius: 12px; /* Bo góc mềm mại cho khung */
+  flex-shrink: 0;    /* QUAN TRỌNG: Ngăn khung bị bóp méo khi màn hình nhỏ lại */
+
+  /* 2. CĂN CHỈNH ẢNH BÊN TRONG */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;  /* Cấm ảnh tràn ra ngoài bo góc */
+  padding: 4px;      /* Thêm một chút khoảng đệm để ảnh không dính sát viền */
+}
+
+.logo-img {
+  max-width: 80%; /* Ảnh không bao giờ rộng hơn khung chứa */
+  max-height: 80%; /* Ảnh không bao giờ cao hơn khung chứa */
+  object-fit: contain; /* QUAN TRỌNG: Giữ nguyên tỷ lệ, không làm ảnh bị méo */
+}
+
+.nav-group { margin-bottom: 24px; }
+
+.nav-group label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+  display: block;
+  padding-left: 12px;
+  color: #94a3b8; /* Slate 400 */
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  text-decoration: none;
+  color: var(--text-muted);
+  border-radius: 10px;
+  margin-bottom: 4px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+  background: #f8fafc;
+  color: var(--text-main);
+}
+
+.nav-item.active {
+  background: var(--primary-light);
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.nav-item svg {
+  transition: transform 0.2s;
+}
+
+.nav-item.active svg {
+  color: var(--primary);
+  transform: scale(1.1);
+}
+
+.sidebar-footer { 
+  margin-top: auto; 
+  border-top: 1px solid var(--sidebar-border); 
+  padding-top: 20px; 
+}
+
+/* Container tổng - bọc cả Icon và Text */
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent; /* Tránh giật khung khi hover */
+}
+
+/* Hiệu ứng di chuột vào cả vùng */
+.user-profile:hover {
+    background-color: #f1f5f9; /* slate-100 */
+    border-color: #e2e8f0; /* slate-200 */
+}
+
+/* Hiệu ứng khi nhấn (Click) - Quan trọng để tạo cảm giác thực tế */
+.user-profile:active {
+    background-color: #e2e8f0; /* slate-200 */
+    transform: scale(0.97); /* Hiệu ứng nhấn lún nhẹ */
+    transition: all 0.1s;
+}
+
+/* Metadata bên trong */
+.user-meta {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.user-name {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 700;
+    color: #0f172a; /* slate-900 */
+    line-height: 1.2;
+}
+
+.user-role {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 500;
+    color: #64748b; /* slate-500 */
+    margin-top: 2px;
+}
+
+/* Tùy chỉnh thêm cho Icon nếu cần */
+.user-profile svg {
+    flex-shrink: 0; /* Đảm bảo icon không bị bóp méo khi text quá dài */
+    transition: transform 0.2s ease;
+}
+
+.user-profile:hover svg {
+    transform: rotate(5deg) scale(1.1); /* Nhích nhẹ icon cho sinh động */
+}
+
+.logout-btn {
+  width: 100%;
+  padding: 12px;
+  background: #fff;
+  color: #ef4444;
+  border: 1px solid #fee2e2;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.logout-btn:hover {
+  background: #fef2f2;
+  border-color: #fecaca;
+}
+
+/* --- CÁC PHẦN CÒN LẠI (GIỮ NGUYÊN) --- */
+.pos-main { flex: 1; display: flex; flex-direction: column; background: var(--bg-app); }
+.pos-topbar { height: 60px; background: var(--surface); display: flex; align-items: center; justify-content: flex-end; padding: 0 24px; border-bottom: 1px solid var(--border); box-shadow: var(--shadow-sm); z-index: 10; }
+.pos-content { flex: 1; padding: 16px 24px; overflow-y: auto; animation: fadeIn 0.4s ease-out; }
+.topbar-actions { display: flex; align-items: center; gap: 28px; }
+.status-indicator { font-size: 0.85rem; display: flex; align-items: center; gap: 8px; font-weight: 500; color: var(--text-muted); }
+.dot.online { width: 8px; height: 8px; background: #10b981; border-radius: 50%; box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.15); }
+.icon-btn { background: none; border: none; color: var(--text-muted); cursor: pointer; transition: color 0.2s; }
+.icon-btn:hover { color: var(--primary); }
+.time-display { font-weight: 700; color: #0f172a; font-variant-numeric: tabular-nums; }
+/* Container chính của Dropdown */
+.notification-dropdown {
+  position: absolute;
+  right: 0;
+  top: 45px;
+  width: 400px;
+  background-color: white;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  z-index: 1000;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header của thông báo */
+.notification-dropdown-header {
+  padding: 16px;
+  background-color: var(--slate-50);
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.notification-dropdown-header h6 {
+  margin: 0;
+  font-weight: 700;
+  color: var(--slate-900);
+}
+
+.badge-new-count {
+  background-color: var(--primary);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* Từng dòng thông báo */
+.notification-item {
+  padding: 16px;
+  border-bottom: 1px solid #f8fafc;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: white;
+}
+
+.notification-item:hover {
+  background-color: #f8f9fa;
+}
+
+/* Trạng thái chưa đọc */
+.notification-item.unread {
+  background-color: rgba(79, 70, 229, 0.08); /* Indigo 600 với độ mờ */
+}
+
+.notification-item.unread:hover {
+  background-color: rgba(79, 70, 229, 0.12);
+}
+
+/* Header của item (Tiêu đề + Giờ) */
+.notification-item-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 4px;
+}
+
+.notification-title-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.notification-title {
+  font-size: 0.95rem;
+  color: var(--slate-800);
+  line-height: 1.4;
+}
+
+.unread .notification-title {
+  color: var(--primary);
+}
+
+.notification-time {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  white-space: nowrap;
+}
+
+/* Nội dung thông báo (Xử lý cắt chữ 3 dòng) */
+.notification-list {
+  max-height: 60vh; /* Giới hạn chiều cao tối đa bằng 60% màn hình */
+  overflow-y: auto; /* Bật thanh cuộn dọc nếu nội dung dài quá */
+  padding-bottom: 8px;
+}
+
+/* Custom thanh cuộn cho đẹp (tùy chọn) */
+.notification-list::-webkit-scrollbar { width: 6px; }
+.notification-list::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 10px; }
+
+/* 2. ÉP TRÌNH DUYỆT HIỂN THỊ HẾT CHỮ KHI MỞ RỘNG (EXPANDED) */
+.notification-content {
+  font-size: 0.85rem;
+  color: #64748b;
+  padding-left: 26px; 
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Lúc đóng lại chỉ cho hiện 2 dòng cho gọn */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  white-space: pre-wrap; /* Giữ nguyên các dấu xuống dòng của danh sách nguyên liệu */
+  line-height: 1.5;
+  transition: all 0.2s ease;
+}
+
+/* KHI CLICK VÀO SẼ KÍCH HOẠT CLASS NÀY ĐỂ BUNG CHỮ RA */
+.notification-content.expanded {
+  display: block !important; 
+  -webkit-line-clamp: unset !important; 
+  overflow: visible !important;
+  color: #334155; 
+  margin-top: 8px; /* Đẩy chữ xuống một xíu cho dễ đọc */
+}
+/* Khi không có thông báo */
+.notification-empty {
+  padding: 40px 20px;
+  text-align: center;
+  color: #94a3b8;
+  font-style: italic;
+}
